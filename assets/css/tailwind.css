@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app-flex {
+  @apply flex flex-col lg:flex-row gap-x-6 gap-y-6 lg:gap-y-12;
+}
