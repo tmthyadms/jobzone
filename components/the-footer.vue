@@ -1,8 +1,8 @@
 <template>
   <footer class="footer items-center p-10 border-t border-base-300">
     <aside class="items-center grid-flow-col">
-      <IconHash :width="32" />
-      <p>Copyright © 2023 - All right reserved by Timothy Adams J.</p>
+      <img src="images/logo/jz-32.png" alt="Jobzone Logo" class="app-img" />
+      <p>Copyright © 2023 - All right reserved by Jobzone</p>
     </aside>
     <nav
       class="grid-flow-col md:place-self-center justify-self-center md:justify-self-end"
@@ -22,12 +22,7 @@ export default {
     return {
       socials: [
         {
-          url: 'https://www.linkedin.com/in/tmthyadms',
-          tip: 'LinkedIn',
-          component: 'IconLinkedin',
-        },
-        {
-          url: 'https://github.com/tmthyadms',
+          url: 'https://github.com/tmthyadms/jobzone',
           tip: 'GitHub',
           component: 'IconGithub',
         },
