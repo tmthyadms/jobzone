@@ -1,27 +1,29 @@
 <template>
   <div
-    class="card lg:card-side max-w-lg lg:max-h-64 bg-base-100 text-base-content shadow-xl"
+    class="card lg:card-side max-w-lg lg:max-h-64 bg-base-100 text-base-content shadow"
     :class="{ 'image-full': overlay, hover: hover }"
   >
     <figure v-if="figure">
-      <img :src="figure" :alt="title" class="object-top" />
+      <img :src="figure" :alt="title" class="app-img object-top" />
     </figure>
     <div class="card-body">
-      <h2 class="card-title capitalize">
-        {{ title }}
-        <div v-if="badge" class="badge badge-secondary">{{ badge }}</div>
-      </h2>
-      <p class="text-xs opacity-60">{{ desc }}</p>
-      <div class="card-actions justify-end">
-        <slot></slot>
-        <div
-          v-if="!slot && badges"
-          v-for="badge in badges"
-          class="badge badge-outline"
-        >
-          {{ badge }}
+      <slot name="body">
+        <h2 v-if="title" class="card-title capitalize">
+          {{ title }}
+          <div v-if="badge" class="badge badge-secondary">{{ badge }}</div>
+        </h2>
+        <p v-if="desc" class="text-xs opacity-60">{{ desc }}</p>
+        <div v-if="slot || badges" class="card-actions justify-end">
+          <slot></slot>
+          <div
+            v-if="!slot && badges"
+            v-for="badge in badges"
+            class="badge badge-outline"
+          >
+            {{ badge }}
+          </div>
         </div>
-      </div>
+      </slot>
     </div>
   </div>
 </template>
@@ -36,7 +38,6 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
     },
     desc: {
       type: String,
@@ -44,7 +45,9 @@ export default {
     badge: {
       type: String,
     },
-    badges: {},
+    badges: {
+      type: Array,
+    },
     figure: {
       type: String,
     },
