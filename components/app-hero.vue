@@ -6,25 +6,36 @@
       :class="{
         'text-neutral-content': img,
         'text-center': center,
-        'flex-col lg:flex-row-reverse': !center,
+        'flex-col-reverse lg:flex-row-reverse': !center,
       }"
     >
+      <slot name="side"></slot>
       <img
-        v-if="!center && figure"
+        v-if="!center && !!!this.$slots.side && figure"
         :src="figure"
         alt=""
         class="max-w-sm rounded-box shadow-2xl"
       />
-      <div>
+      <div class="flex-1">
         <div class="mx-auto max-w-md">
-          <h1 class="text-5xl font-bold capitalize">{{ title }}</h1>
-          <p v-if="desc" class="mt-5 md:text-lg xl:text-2xl opacity-60">
-            {{ desc }}
-          </p>
+          <h1
+            v-if="title"
+            class="text-5xl font-bold capitalize text-center lg:text-start"
+            :class="{ 'mb-6': desc }"
+          >
+            {{ title }}
+          </h1>
+          <p
+            v-if="desc"
+            class="md:text-lg xl:text-2xl font-light text-center lg:text-start"
+            :class="{
+              'mb-6': !!this.$slots.default,
+              'opacity-60': !img,
+            }"
+            v-html="desc"
+          ></p>
         </div>
-        <div class="slot">
-          <slot></slot>
-        </div>
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -35,10 +46,13 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
     },
     desc: {
       type: String,
+    },
+    loose: {
+      type: Boolean,
+      default: false,
     },
     img: {
       type: String,
@@ -58,13 +72,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.slot {
-  @apply mt-5;
-}
-
-.slot:empty {
-  @apply hidden;
-}
-</style>
