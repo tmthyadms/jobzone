@@ -17,3 +17,7 @@
     @apply form-input block w-full px-0.5 bg-base-100 border-0 border-b-2 border-base-content border-opacity-25 focus:ring-0 focus:border-primary;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
