@@ -8,7 +8,7 @@
       class="grid-flow-col md:place-self-center justify-self-center md:justify-self-end"
     >
       <div v-for="social in socials" class="tooltip" :data-tip="social.tip">
-        <a :href="social.url" class="btn btn-square btn-ghost">
+        <a :href="social.url" target="_blank" class="btn btn-square btn-ghost">
           <component :is="social.component" :width="20" />
         </a>
       </div>
