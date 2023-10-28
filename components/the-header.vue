@@ -12,18 +12,14 @@
         </a>
       </div>
       <div class="flex-none">
-        <div
-          id="tip-theme"
-          class="tooltip tooltip-left"
-          :data-tip="theme.light.tip"
-        >
+        <div id="tip-theme" class="tooltip tooltip-left" :data-tip="themeTip">
           <label
             role="button"
             class="btn btn-ghost btn-circle swap swap-rotate"
           >
             <input type="checkbox" v-model="theme.isDarkMode" />
-            <div class="swap-on"><IconMoon :width="20" /></div>
-            <div class="swap-off"><IconSun :width="20" /></div>
+            <IconMoon :width="20" class="swap-on" />
+            <IconSun :width="20" class="swap-off" />
           </label>
         </div>
       </div>
@@ -44,6 +40,7 @@ export default {
           current: 'business',
           tip: 'Switch to light mode',
         },
+        storage: 'isDarkMode',
         isDarkMode: false,
       },
     };
@@ -53,8 +50,13 @@ export default {
       this.setTheme(newFlag);
     },
   },
+  computed: {
+    themeTip() {
+      return this.theme.isDarkMode ? this.theme.dark.tip : this.theme.light.tip;
+    },
+  },
   mounted() {
-    const userPref = JSON.parse(localStorage.getItem('isDarkMode'));
+    const userPref = JSON.parse(localStorage.getItem(this.theme.storage));
     this.theme.isDarkMode = userPref ?? this.theme.isDarkMode;
     this.setTheme(this.theme.isDarkMode);
     this.shadowOnScroll();
@@ -64,10 +66,7 @@ export default {
       document.body.parentNode.dataset.theme = isDarkMode
         ? this.theme.dark.current
         : this.theme.light.current;
-      document.getElementById('tip-theme').dataset.tip = isDarkMode
-        ? this.theme.dark.tip
-        : this.theme.light.tip;
-      localStorage.setItem('isDarkMode', isDarkMode);
+      localStorage.setItem(this.theme.storage, isDarkMode);
     },
     shadowOnScroll() {
       document.body.onscroll = () => {
