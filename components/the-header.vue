@@ -4,12 +4,7 @@
   >
     <div class="navbar">
       <div class="flex-1">
-        <a href="#" class="flex gap-2 items-center">
-          <img src="images/logo/jz-32.png" alt="Jobzone Logo" class="app-img" />
-          <span class="font-bold text-lg lg:text-xl normal-case"
-            >Job<span class="text-primary">zone</span></span
-          >
-        </a>
+        <AppComboMark :link="true" />
       </div>
       <div class="flex-none">
         <div id="tip-theme" class="tooltip tooltip-left" :data-tip="themeTip">
