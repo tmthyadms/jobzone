@@ -52,7 +52,6 @@ export default {
     },
     loose: {
       type: Boolean,
-      default: false,
     },
     img: {
       type: String,
