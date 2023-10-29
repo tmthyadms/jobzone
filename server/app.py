@@ -18,14 +18,6 @@ def create_auth():
     password = request.form.get('password')
     account = request.form.get('account')
 
-    # job seeker additional fields during registration
-    first_name = request.form.get('first-name')
-    last_name = request.form.get('last-name')
-
-    # business additional fields during registration
-    company_name = request.form.get('company-name')  
-    registration_number = request.form.get('registration-number') 
-
     auth = {
         "email": email,
         "password": password,
@@ -37,16 +29,26 @@ def create_auth():
     if account == 'Job seeker':
         job_seeker = {}
         job_seeker['_id'] = auth_id
+        first_name = request.form.get('first-name')
+        last_name = request.form.get('last-name')
+        gender = request.form.get('gender')
+        country = request.form.get('country')
 
         if first_name:
             job_seeker['firstname'] = first_name
         if last_name:
             job_seeker['lastname'] = last_name
+        if gender:
+            job_seeker['gender'] = gender
+        if country:
+            job_seeker['country'] = country      
 
         mongo.db.jobseekers.insert_one(job_seeker).inserted_id
     elif account == 'Business':
         businses_data = {}
         businses_data['_id'] = auth_id
+        company_name = request.form.get('company-name')  
+        registration_number = request.form.get('registration-number') 
 
         if company_name:
             businses_data['name'] = company_name
