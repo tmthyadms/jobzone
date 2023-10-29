@@ -123,6 +123,8 @@ def update_job_seeker():
     job_seeker_id = request.form.get('job-seeker-id')
     first_name = request.form.get('first-name')
     last_name = request.form.get('last-name')
+    gender = request.form.get('gender')
+    country = request.form.get('country')
     job_title = request.form.get('job-title')
     company_name = request.form.get('company-name')
     education_level = request.form.get('education-level')
@@ -134,6 +136,10 @@ def update_job_seeker():
         job_seeker['firstname'] = first_name
     if last_name:
         job_seeker['lastname'] = last_name
+    if gender:
+        job_seeker['gender'] = gender
+    if country:
+        job_seeker['country'] = country
     if job_title:
         job_seeker['jobtitle'] = job_title
     if company_name:
