@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+
+    <h1>Create Auth</h1>
+    <form action="/createAuth" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <h3>All</h3>
+            <div style="margin-bottom: 1em">
+                <label for="email">Email:</label>
+                <input id="email" name="email" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="password">Password:</label>
+                <input id="password" name="password" style="width: 10em" type="password"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="account">Account type:</label>
+                <input id="account" name="account" style="width: 10em"></input>
+            </div>
+
+            <h3>Job Seeker</h3>
+            <div style="margin-bottom: 1em">
+                <label for="first-name">First Name:</label>
+                <input id="first-name" name="first-name" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="last-name">Last Name:</label>
+                <input id="last-name" name="last-name" style="width: 10em"></input>
+            </div>
+            <h3>Bussiness</h3>
+            <div style="margin-bottom: 1em">
+                <label for="company-name">Company name:</label>
+                <input id="company-name" name="company-name" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="registration-number">Registration number:</label>
+                <input id="registration-number" name="registration-number" style="width: 10em"></input>
+            </div>
+
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <h1>Auth</h1>
+    <form action="/auth" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="auth-id">Auth id:</label>
+                <input id="auth-id" name="auth-id" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Get auth">
+        </div>
+    </form>
+
+    <h1>Auths</h1>
+    <form action="/auths" method="POST">
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Get auths">
+        </div>
+    </form>
+
+    <h1>Update Auth</h1>
+    <form action="/updateAuth" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="auth-id">Auth id:</label>
+                <input id="auth-id" name="auth-id" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="email">Email:</label>
+                <input id="email" name="email" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="password">Password:</label>
+                <input id="password" name="password" style="width: 10em" type="password"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <h1>Delete Auth</h1>
+    <form action="/deleteAuth" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="auth-id">Auth id:</label>
+                <input id="auth-id" name="auth-id" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <h1>Job Seeker</h1>
+    <form action="/jobSeeker" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="job-seeker-id">Job seeker Id:</label>
+                <input id="job-seeker-id" name="job-seeker-id" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Get job seeker">
+        </div>
+    </form>
+
+    <h1>Job Seekers</h1>
+    <form action="/jobSeekers" method="POST">
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Get job seekers">
+        </div>
+    </form>
+
+    <h1>Update Job Seekers</h1>
+    <form action="/updateJobSeeker" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="job-seeker-id">Job seeker id:</label>
+                <input id="job-seeker-id" name="job-seeker-id" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="first-name">First name:</label>
+                <input id="first-name" name="first-name" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="last-name">Last name:</label>
+                <input id="last-name" name="last-name" style="width: 10em"></input>
+            </div>
+            <p>Latest Job related</p>
+            <div style="margin-bottom: 1em">
+                <label for="job-title">Job title:</label>
+                <input id="job-title" name="job-title" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="company-name">Company:</label>
+                <input id="company-name" name="company-name" style="width: 10em"></input>
+            </div>
+            <p>Education related</p>
+            <div style="margin-bottom: 1em">
+                <label for="education-level">Education level:</label>
+                <input id="education-level" name="education-level" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="study-field">Field of study:</label>
+                <input id="study-field" name="study-field" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+
+    <h1>Business</h1>
+    <form action="/business" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="business-id">Business Id:</label>
+                <input id="business-id" name="business-id" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Get business">
+        </div>
+    </form>
+
+    <h1>Businesses</h1>
+    <form action="/businesses" method="POST">
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Get businesses">
+        </div>
+    </form>
+
+    <h1>Update Business</h1>
+    <form action="/updateBusiness" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="business-id">Business id:</label>
+                <input id="business-id" name="business-id" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="company-name">Company name:</label>
+                <input id="company-name" name="company-name" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="company-registration-number">Registration number:</label>
+                <input id="company-registration-number" name="company-registration-number" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="address">Address:</label>
+                <input id="address" name="address" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="company-background">Company background:</label>
+                <input id="company-background" name="company-background" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="company-size">Company size:</label>
+                <input id="company-size" name="company-size" style="width: 10em" type="number"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="email">Email:</label>
+                <input id="email" name="email" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="pwd">Password:</label>
+                <input id="pwd" name="pwd" style="width: 10em" type="password"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <h1>Create Job Posting</h1>
+    <form action="/createJobPosting" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="title">Title:</label>
+                <input id="title" name="title" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="location">Location:</label>
+                <input id="location" name="location" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="department">Department:</label>
+                <input id="department" name="department" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="min-salary-range">Minimum salary range:</label>
+                <input id="min-salary-range" name="min-salary-range" style="width: 10em" type="number"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="max-salary-range">Maximum salary range:</label>
+                <input id="max-salary-range" name="max-salary-range" style="width: 10em" type="number"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="description">Description:</label>
+                <input id="description" name="description" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="requirements">Requirements:</label>
+                <input id="requirements" name="requirements" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="benefits">Benefits:</label>
+                <input id="benefits" name="benefits" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <h1>Job Posting</h1>
+    <form action="/jobPosting" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="job-posting-id">Job Posting Id:</label>
+                <input id="job-posting-id" name="job-posting-id" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Get Job Posting">
+        </div>
+    </form>
+
+    <h1>Job Postings</h1>
+    <form action="/jobPostings" method="POST">
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Get Job Postings">
+        </div>
+    </form>
+
+    <h1>Update Job Posting</h1>
+    <form action="/updateJobPosting" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="job-posting-id">Job Posting Id:</label>
+                <input id="job-posting-id" name="job-posting-id" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="title">Title:</label>
+                <input id="title" name="title" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="location">Location:</label>
+                <input id="location" name="location" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="department">Department:</label>
+                <input id="department" name="department" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="min-salary-range">Minimum salary range:</label>
+                <input id="min-salary-range" name="min-salary-range" style="width: 10em" type="number"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="max-salary-range">Maximum salary range:</label>
+                <input id="max-salary-range" name="max-salary-range" style="width: 10em" type="number"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="description">Description:</label>
+                <input id="description" name="description" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="requirements">Requirements:</label>
+                <input id="requirements" name="requirements" style="width: 10em"></input>
+            </div>
+            <div style="margin-bottom: 1em">
+                <label for="benefits">Benefits:</label>
+                <input id="benefits" name="benefits" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <h1>Delete Job Posting</h1>
+    <form action="/deleteJobPosting" method="POST">
+        <div style="display:flex; flex-direction: column;">
+            <div style="margin-bottom: 1em">
+                <label for="job-posting-id">Job Posting Id:</label>
+                <input id="job-posting-id" name="job-posting-id" style="width: 10em"></input>
+            </div>
+        </div>
+        <div style="margin-bottom: 1em">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+
+</body>
+</html>
