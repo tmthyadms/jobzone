@@ -80,7 +80,7 @@ def get_auth():
     auth_id = data.get('authId')
     auth = mongo.db.auths.find_one_or_404({"_id": ObjectId(auth_id)})
     auth['_id'] = str(auth['_id'])
-    return render_template('auth.html', auth=auth)
+    return auth
 
 
 @app.route('/auths', methods=['POST'])
@@ -88,7 +88,7 @@ def get_auths():
     auths = list(mongo.db.auths.find())
     for auth in auths:
         auth['_id'] = str(auth['_id'])
-    return render_template('auths.html', auths=auths)
+    return auths
 
 
 @app.route('/updateAuth', methods=['POST'])
@@ -138,7 +138,8 @@ def get_job_seeker():
     job_seeker_id = data.get('jobSeekerId')
     job_seeker = mongo.db.jobseekers.find_one_or_404({"_id": ObjectId(job_seeker_id)})
     job_seeker['_id'] = str(job_seeker['_id'])
-    return render_template('jobseeker.html', job_seeker=job_seeker)
+
+    return job_seeker
 
 
 @app.route('/jobSeekers', methods=['POST'])
@@ -146,7 +147,8 @@ def get_job_seekers():
     job_seekers = list(mongo.db.jobseekers.find())
     for job_seeker in job_seekers:
         job_seeker['_id'] = str(job_seeker['_id'])
-    return render_template('jobseekers.html', job_seekers=job_seekers)
+
+    return job_seekers
 
 
 @app.route('/updateJobSeeker', methods=['POST'])
@@ -227,7 +229,7 @@ def get_business():
     business_id = data.get('businessId')
     business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(business_id)})
     business['_id'] = str(business['_id'])
-    return render_template('business.html', business=business)
+    return business
 
 
 @app.route('/businesses', methods=['POST'])
@@ -235,7 +237,8 @@ def get_businesses():
     businesses = list(mongo.db.businesses.find())
     for business in businesses:
         business['_id'] = str(business['_id'])
-    return render_template('businesses.html', businesses=businesses)
+    return businesses
+
 
 ############################ LOGIN ############################
 # TODO: set session or access token
@@ -289,7 +292,7 @@ def get_jobposting():
     job_posting = mongo.db.jobpostings.find_one_or_404(
         {"_id": ObjectId(job_posting_id)})
     job_posting['_id'] = str(job_posting['_id'])
-    return render_template('jobposting.html', job_posting=job_posting)
+    return job_posting
 
 
 @app.route('/jobPostings', methods=['POST'])
@@ -297,7 +300,7 @@ def get_jobpostings():
     job_postings = list(mongo.db.jobpostings.find())
     for job_posting in job_postings:
         job_posting['_id'] = str(job_posting['_id'])
-    return render_template('jobpostings.html', job_postings=job_postings)
+    return job_postings
 
 
 @app.route('/updateJobPosting', methods=['POST'])
