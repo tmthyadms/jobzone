@@ -17,7 +17,7 @@
         class="max-w-sm rounded-box shadow-2xl"
       />
       <div class="flex-1">
-        <div class="mx-auto max-w-md">
+        <div v-if="title || desc" class="mx-auto max-w-md">
           <h1
             v-if="title"
             class="text-5xl font-bold capitalize text-center lg:text-start"
@@ -49,9 +49,6 @@ export default {
     },
     desc: {
       type: String,
-    },
-    loose: {
-      type: Boolean,
     },
     img: {
       type: String,
