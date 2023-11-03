@@ -13,8 +13,8 @@
     @apply bg-base-300 border border-base-content border-opacity-5 rounded-box;
   }
 
-  .app-input {
-    @apply form-input block w-full px-0.5 bg-base-100 border-0 border-b-2 border-base-content border-opacity-25 focus:ring-0 focus:border-primary;
+  .app-field {
+    @apply block w-full px-0.5 bg-base-100 border-0 border-b-2 border-base-content border-opacity-25 focus:ring-0 focus:border-primary;
   }
 }
 
