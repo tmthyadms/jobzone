@@ -1,13 +1,18 @@
 <template>
   <label class="block">
-    <span class="text-xs font-semibold opacity-60 capitalize">{{ label }}</span>
+    <span class="text-xs font-semibold capitalize align-top opacity-60"
+      >{{ label }} <span v-if="req">*</span></span
+    >
     <slot>
       <input
         :type="type"
-        :id="inputId"
-        :name="inputId"
-        :placeholder="placeholder"
-        class="app-input"
+        :id="newInputId"
+        :name="newInputId"
+        :placeholder="inputPlaceholder"
+        class="form-input app-field"
+        :required="req"
+        :autocomplete="ac"
+        @input="$emit('input', $event.target.value)"
       />
     </slot>
   </label>
@@ -15,6 +20,7 @@
 
 <script>
 export default {
+  emits: ['input'],
   props: {
     label: {
       type: String,
@@ -30,13 +36,24 @@ export default {
     inputId: {
       type: String,
     },
+    new: {
+      type: Boolean,
+    },
+    req: {
+      type: Boolean,
+    },
+    ac: {
+      type: String,
+      default: 'off',
+    },
   },
   computed: {
-    placeholder() {
+    newInputId() {
+      return this.new ? `new-${this.inputId}` : this.inputId;
+    },
+    inputPlaceholder() {
       return this.prompt ? this.prompt : 'Enter your ' + this.label;
     },
   },
 };
 </script>
-
-<style scoped></style>

@@ -1,11 +1,16 @@
 <template>
-  <AppInput label="password">
+  <AppInput label="password" :req="true">
     <div class="relative">
       <input
         :type="passwordType"
         :id="passwordId"
+        :name="passwordId"
         placeholder="Enter your password"
-        class="app-input pr-5"
+        class="form-input app-field pr-5"
+        minlength="8"
+        required
+        :autocomplete="passwordAc"
+        @input="$emit('input', $event.target.value)"
       />
 
       <div
@@ -52,7 +57,10 @@ export default {
         : this.password.hide.type;
     },
     passwordId() {
-      return this.new ? `${this.new}-password` : 'password';
+      return this.new ? `new-pwd` : 'pwd';
+    },
+    passwordAc() {
+      return this.new ? 'new-password' : 'current-password';
     },
     passwordTip() {
       return this.password.reveal
@@ -67,5 +75,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>
