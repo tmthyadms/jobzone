@@ -41,8 +41,8 @@ export default {
     };
   },
   watch: {
-    'theme.isDarkMode'(newFlag) {
-      this.setTheme(newFlag);
+    'theme.isDarkMode'(newValue) {
+      this.setTheme(newValue);
     },
   },
   computed: {
