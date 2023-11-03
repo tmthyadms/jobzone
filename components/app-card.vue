@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card lg:card-side max-w-lg lg:max-h-64 bg-base-100 text-base-content shadow"
+    class="card lg:card-side bg-base-100 text-base-content shadow"
     :class="{ 'image-full': overlay, hover: hover }"
   >
     <figure v-if="figure">
