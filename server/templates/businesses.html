@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Businesses</title>
+</head>
+<body>
+    <ul>
+        {% for business in businesses %}
+        <li>
+            <h1><strong>ID:</strong> {{ business._id }}</h1>
+            <p>Company name: {{ business.name }}</p>
+            <p><strong>Registration number:</strong> {{ business.registrationnumber }}</p>
+            <p><strong>Address:</strong> {{ business.address }}</p>
+            <p><strong>Company background:</strong> {{ business.background }}</p>
+            <p><strong>Company size:</strong> {{ business.companysize }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
