@@ -18,7 +18,7 @@ Session(app)
 def index():
     return render_template('index.html')
 
-from modules import auth, business
+from modules import auth, business, job_posting, job_seeker
 
 if __name__ == "__main__":
     app.run(port=6001, debug=True)
