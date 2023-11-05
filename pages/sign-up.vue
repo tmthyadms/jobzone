@@ -33,7 +33,7 @@ import { mapActions } from 'vuex';
 
 export default {
   methods: {
-    ...mapActions('sign-up', ['setRecentExp', 'setRecentEdu']),
+    ...mapActions('qualifications', ['setRecentExp', 'setRecentEdu']),
     addExp() {
       const eduModal = document.getElementById('exp_modal');
       const expForm = document.getElementById('exp-form');
