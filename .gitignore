@@ -91,4 +91,4 @@ sw.*
 
 # Flask session files
 flask_session/
-server/modules/pycache/
+server/modules/__pycache__/
