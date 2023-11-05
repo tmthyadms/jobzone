@@ -40,24 +40,15 @@ def update_job_seeker():
 
     job_seeker = {}
 
-    if first_name:
-        job_seeker['name']['first'] = first_name
-    if last_name:
-        job_seeker['name']['last'] = last_name
-    if gender:
-        job_seeker['gender'] = gender
-    if country:
-        job_seeker['country'] = country
-    if job_title:
-        job_seeker['recentExperience']['jobTitle'] = job_title
-    if company:
-        job_seeker['recentExperience']['company'] = company
-    if level_edu:
-        job_seeker['recentEducation']['levelEducation'] = level_edu
-    if field_study:
-        job_seeker['recentEducation']['fieldStudy'] = field_study   
+    if first_name: job_seeker['name']['first'] = first_name
+    if last_name: job_seeker['name']['last'] = last_name
+    if gender: job_seeker['gender'] = gender
+    if country: job_seeker['country'] = country
+    if job_title: job_seeker['recentExperience']['jobTitle'] = job_title
+    if company: job_seeker['recentExperience']['company'] = company
+    if level_edu: job_seeker['recentEducation']['levelEducation'] = level_edu
+    if field_study: job_seeker['recentEducation']['fieldStudy'] = field_study   
     
-    mongo.db.jobseekers.update_one(
-        {"_id": ObjectId(job_seeker_id)}, {"$set": job_seeker})
+    mongo.db.jobseekers.update_one({"_id": ObjectId(job_seeker_id)}, {"$set": job_seeker})
 
     return "Job seeker updated."

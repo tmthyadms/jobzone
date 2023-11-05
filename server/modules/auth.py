@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 mongo = PyMongo(app)
 from bson import ObjectId
 
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -16,12 +17,11 @@ def login():
     if 'authId' in session and session['authId']:
         return 'You are currently logged into your active account.'
     else:
-        if auth: 
-            session['authId'] = auth['_id']
-        else: 
-            return None
+        if auth: session['authId'] = auth['_id']
+        else: return ''
 
     return str(auth['_id'])
+
 
 @app.route('/logout', methods=['POST'])
 def logout():
@@ -30,9 +30,9 @@ def logout():
     
     return True
 
+
 @app.route('/createAuth', methods=['POST'])
 def create_auth():
-    # mandatory fields for both
     data = request.get_json()
 
     email = data.get('email')
@@ -62,22 +62,14 @@ def create_auth():
         level_edu = data.get('recentEdu').get('levelEdu')
         field_study = data.get('recentEdu').get('fieldStudy')       
 
-        if first_name:
-            job_seeker['name']['first'] = first_name
-        if last_name:
-            job_seeker['name']['last'] = last_name
-        if gender:
-            job_seeker['gender'] = gender
-        if country:
-            job_seeker['country'] = country
-        if job_title:
-            job_seeker['recentExperience']['jobTitle'] = job_title
-        if company:
-            job_seeker['recentExperience']['company'] = company
-        if level_edu:
-            job_seeker['recentEducation']['levelEducation'] = level_edu
-        if field_study:
-            job_seeker['recentEducation']['fieldStudy'] = field_study     
+        if first_name: job_seeker['name']['first'] = first_name
+        if last_name: job_seeker['name']['last'] = last_name
+        if gender: job_seeker['gender'] = gender
+        if country: job_seeker['country'] = country
+        if job_title: job_seeker['recentExperience']['jobTitle'] = job_title
+        if company: job_seeker['recentExperience']['company'] = company
+        if level_edu: job_seeker['recentEducation']['levelEducation'] = level_edu
+        if field_study: job_seeker['recentEducation']['fieldStudy'] = field_study     
 
         mongo.db.jobseekers.insert_one(job_seeker).inserted_id
     elif accountType == 'business':
@@ -88,14 +80,10 @@ def create_auth():
         address = data.get('address')
         company_size = data.get('compSize')
         
-        if company_name:
-            business['name'] = company_name
-        if registration_number:
-            business['registrationNumber'] = registration_number
-        if address:
-            business['address'] = address
-        if company_size:
-            business['companySize'] = company_size
+        if company_name: business['name'] = company_name
+        if registration_number:business['registrationNumber'] = registration_number
+        if address: business['address'] = address
+        if company_size: business['companySize'] = company_size
 
         mongo.db.businesses.insert_one(business).inserted_id
 
@@ -105,17 +93,21 @@ def create_auth():
 @app.route('/auth', methods=['POST', 'GET'])
 def get_auth():
     data = request.get_json()
+
     auth_id = data.get('authId')
     auth = mongo.db.auths.find_one_or_404({"_id": ObjectId(auth_id)})
     auth['_id'] = str(auth['_id'])
+
     return auth
 
 
 @app.route('/auths', methods=['POST'])
 def get_auths():
     auths = list(mongo.db.auths.find())
+
     for auth in auths:
         auth['_id'] = str(auth['_id'])
+
     return auths
 
 
@@ -130,12 +122,11 @@ def update_auth():
     auth_data = {}
 
     if auth_id:
-        if email:
-            auth_data['email'] = email
-        if password:
-            auth_data['password'] = password
+        if email: auth_data['email'] = email
+        if password: auth_data['password'] = password
 
     mongo.db.auths.update_one({"_id": ObjectId(auth_id)}, {"$set": auth_data})
+    
     return "Auth updated."
 
 
