@@ -21,20 +21,20 @@ export const getters = {
 };
 
 export const mutations = {
-  setRecentExp(state, data) {
-    state.recent.exp = data;
+  setRecentExp(state, payload) {
+    state.recent.exp = payload;
   },
-  setRecentEdu(state, data) {
-    state.recent.edu = data;
+  setRecentEdu(state, payload) {
+    state.recent.edu = payload;
   },
 };
 
 export const actions = {
-  setRecentExp({ commit }, data) {
-    commit('setRecentExp', data);
+  setRecentExp({ commit }, payload) {
+    commit('setRecentExp', payload);
   },
-  setRecentEdu({ commit }, data) {
-    commit('setRecentEdu', data);
+  setRecentEdu({ commit }, payload) {
+    commit('setRecentEdu', payload);
   },
   clearRecentExp({ commit }) {
     commit('setRecentExp', {
