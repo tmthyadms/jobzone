@@ -43,7 +43,7 @@ def update_job_seeker():
     if first_name:
         job_seeker['name']['first'] = first_name
     if last_name:
-        job_seeker['lastName']['last'] = last_name
+        job_seeker['name']['last'] = last_name
     if gender:
         job_seeker['gender'] = gender
     if country:
