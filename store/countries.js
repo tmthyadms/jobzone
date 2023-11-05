@@ -30,7 +30,7 @@ export const actions = {
       const data = await this.$axios.$get('https://restcountries.com/v3.1/all');
       commit('setCountries', data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   },
 };
