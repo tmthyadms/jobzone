@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 mongo = PyMongo(app)
 from bson import ObjectId
 
+
 @app.route('/updateBusiness', methods=['POST'])
 def update_business():
     data = request.get_json()
@@ -16,17 +17,12 @@ def update_business():
 
     business = {}
 
-    if company_name:
-        business['name'] = company_name
-    if registration_number:
-        business['registrationNumber'] = registration_number
-    if address:
-        business['address'] = address
-    if company_size:
-        business['companySize'] = company_size
+    if company_name: business['name'] = company_name
+    if registration_number: business['registrationNumber'] = registration_number
+    if address: business['address'] = address
+    if company_size: business['companySize'] = company_size
 
-    mongo.db.businesses.update_one(
-        {"_id": ObjectId(business_id)}, {"$set": business})
+    mongo.db.businesses.update_one({"_id": ObjectId(business_id)}, {"$set": business})
 
     return "Business updated."
 
@@ -37,6 +33,7 @@ def get_business():
     business_id = data.get('businessId')
     business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(business_id)})
     business['_id'] = str(business['_id'])
+
     return business
 
 
@@ -45,4 +42,5 @@ def get_businesses():
     businesses = list(mongo.db.businesses.find())
     for business in businesses:
         business['_id'] = str(business['_id'])
+        
     return businesses

@@ -1,7 +1,6 @@
-from flask import Flask, request, jsonify, render_template, session
+from flask import Flask, render_template
 from flask_session import Session
 from flask_pymongo import PyMongo
-from bson import ObjectId
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
@@ -10,7 +9,7 @@ app.config["CORS_HEADERS"] = "Content-Type"
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 mongo = PyMongo(app)
-cors = CORS(app)
+CORS(app)
 Session(app)
 
 @cross_origin()
