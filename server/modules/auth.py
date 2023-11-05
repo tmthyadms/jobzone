@@ -19,14 +19,14 @@ def login():
         if auth: 
             session['authId'] = auth['_id']
         else: 
-            return False
+            return None
 
-    return True
+    return str(auth['_id'])
 
 @app.route('/logout', methods=['POST'])
 def logout():
     if 'authId' in session and session['authId']: session['authId'] = None
-    else: return False
+    else: return None
     
     return True
 
@@ -65,7 +65,7 @@ def create_auth():
         if first_name:
             job_seeker['name']['first'] = first_name
         if last_name:
-            job_seeker['lastName']['last'] = last_name
+            job_seeker['name']['last'] = last_name
         if gender:
             job_seeker['gender'] = gender
         if country:
@@ -88,14 +88,14 @@ def create_auth():
         address = data.get('address')
         company_size = data.get('compSize')
         
-    if company_name:
-        business['name'] = company_name
-    if registration_number:
-        business['registrationNumber'] = registration_number
-    if address:
-        business['address'] = address
-    if company_size:
-        business['companySize'] = company_size
+        if company_name:
+            business['name'] = company_name
+        if registration_number:
+            business['registrationNumber'] = registration_number
+        if address:
+            business['address'] = address
+        if company_size:
+            business['companySize'] = company_size
 
         mongo.db.businesses.insert_one(business).inserted_id
 
