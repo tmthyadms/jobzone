@@ -18,8 +18,8 @@ def create_job_posting():
     requirements = data.get('requirements')
     benefits = data.get('benefits')
     employment_type = data.get('employmentType')
-    required_experience = data.get('requiredExperience')
-    required_education = data.get('requiredEducation')
+    required_experience = data.get('requiredExp')
+    required_education = data.get('requiredEdu')
     industry = data.get('industry')
     function = data.get('function')
 
@@ -83,8 +83,8 @@ def update_job_posting():
     requirements = data.get('requirements')
     benefits = data.get('benefits')
     employment_type = data.get('employmentType')
-    required_experience = data.get('requiredExperience')
-    required_education = data.get('requiredEducation')
+    required_experience = data.get('requiredExp')
+    required_education = data.get('requiredEdu')
     industry = data.get('industry')
     function = data.get('function')
 
