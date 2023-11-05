@@ -13,20 +13,22 @@ def login():
 
     auth = mongo.db.auths.find_one({"email": email, "password": password})
 
-    if session['authId']:
+    if 'authId' in session and session['authId']:
         return 'You are currently logged into your active account.'
     else:
-        if auth: session['authId'] = auth['_id']
-        else: return 'User not found.'
+        if auth: 
+            session['authId'] = auth['_id']
+        else: 
+            return False
 
-    return 'Login successful.'
+    return True
 
 @app.route('/logout', methods=['POST'])
 def logout():
-    if session['authId']: session['authId'] = None
-    else: return 'You are not currently signed in.'
+    if 'authId' in session and session['authId']: session['authId'] = None
+    else: return False
     
-    return 'Logout successful.'
+    return True
 
 @app.route('/createAuth', methods=['POST'])
 def create_auth():
@@ -48,40 +50,54 @@ def create_auth():
     if accountType == 'job-seeker':
         job_seeker = {}
         job_seeker['_id'] = auth_id
-
-        first_name = data.get('firstName')
-        last_name = data.get('lastName')
+        job_seeker['name'] = {}
+        job_seeker['recentExperience'] = {}
+        job_seeker['recentEducation'] = {}
+        first_name = data.get('name').get('first')
+        last_name = data.get('name').get('last')
         gender = data.get('gender')
         country = data.get('country')
-        recent_exp = data.get('recentExp')
-        recent_edu = data.get('recentEdu')
+        job_title = data.get('recentExp').get('jobTitle')
+        company = data.get('recentExp').get('company')
+        level_edu = data.get('recentEdu').get('levelEdu')
+        field_study = data.get('recentEdu').get('fieldStudy')       
 
         if first_name:
-            job_seeker['firstName'] = first_name
+            job_seeker['name']['first'] = first_name
         if last_name:
-            job_seeker['lastName'] = last_name
+            job_seeker['lastName']['last'] = last_name
         if gender:
             job_seeker['gender'] = gender
         if country:
             job_seeker['country'] = country
-        if recent_exp:
-            job_seeker['recentExperience'] = recent_exp
-        if recent_edu:
-            job_seeker['recentEducation'] = recent_edu
+        if job_title:
+            job_seeker['recentExperience']['jobTitle'] = job_title
+        if company:
+            job_seeker['recentExperience']['company'] = company
+        if level_edu:
+            job_seeker['recentEducation']['levelEducation'] = level_edu
+        if field_study:
+            job_seeker['recentEducation']['fieldStudy'] = field_study     
 
         mongo.db.jobseekers.insert_one(job_seeker).inserted_id
     elif accountType == 'business':
-        businses_data = {}
-        businses_data['_id'] = auth_id
-        company_name = data.get('companyName')
-        registration_number = data.get('registrationNum')
+        business = {}
+        business['_id'] = auth_id
+        company_name = data.get('compName')
+        registration_number = data.get('regNum')
+        address = data.get('address')
+        company_size = data.get('compSize')
+        
+    if company_name:
+        business['name'] = company_name
+    if registration_number:
+        business['registrationNumber'] = registration_number
+    if address:
+        business['address'] = address
+    if company_size:
+        business['companySize'] = company_size
 
-        if company_name:
-            businses_data['name'] = company_name
-        if registration_number:
-            businses_data['registrationNum'] = registration_number
-
-        mongo.db.businesses.insert_one(businses_data).inserted_id
+        mongo.db.businesses.insert_one(business).inserted_id
 
     return str(auth_id)
 

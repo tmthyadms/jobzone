@@ -88,3 +88,7 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Flask session files
+flask_session/
+server/modules/__pycache__/
