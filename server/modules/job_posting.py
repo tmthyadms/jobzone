@@ -18,8 +18,8 @@ def create_job_posting():
     requirements = data.get('requirements')
     benefits = data.get('benefits')
     employment_type = data.get('employmentType')
-    required_experience = data.get('requiredExperience')
-    required_education = data.get('requiredEducation')
+    required_experience = data.get('requiredExp')
+    required_education = data.get('requiredEdu')
     industry = data.get('industry')
     function = data.get('function')
 
@@ -75,20 +75,19 @@ def update_job_posting():
     title = data.get('title')
     location = data.get('location')
     department = data.get('department')
-
     min_salary_range = data.get('salaryRange').get('min')
     max_salary_range = data.get('salaryRange').get('max')
-
     description = data.get('description')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
     employment_type = data.get('employmentType')
-    required_experience = data.get('requiredExperience')
-    required_education = data.get('requiredEducation')
+    required_experience = data.get('requiredExp')
+    required_education = data.get('requiredEdu')
     industry = data.get('industry')
     function = data.get('function')
 
     job_posting = {}
+    job_posting['salaryRange'] = {}
 
     if title: job_posting['title'] = title
     if location: job_posting['location'] = location
