@@ -7,7 +7,5 @@ export const state = () => ({
 });
 
 export const getters = {
-  accType(state) {
-    return state.accType;
-  },
+  accType: (state) => state.accType,
 };

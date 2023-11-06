@@ -3,9 +3,7 @@ export const state = () => ({
 });
 
 export const getters = {
-  countries(state) {
-    return state.countries;
-  },
+  countries: (state) => state.countries,
 };
 
 export const mutations = {

@@ -12,12 +12,8 @@ export const state = () => ({
 });
 
 export const getters = {
-  recentExp(state) {
-    return state.recent.exp;
-  },
-  recentEdu(state) {
-    return state.recent.edu;
-  },
+  recentExp: (state) => state.recent.exp,
+  recentEdu: (state) => state.recent.edu,
 };
 
 export const mutations = {

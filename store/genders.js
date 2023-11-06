@@ -8,7 +8,5 @@ export const state = () => ({
 });
 
 export const getters = {
-  genders(state) {
-    return state.genders;
-  },
+  genders: (state) => state.genders,
 };
