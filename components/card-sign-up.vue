@@ -31,14 +31,14 @@
             input-id="first-name"
             :req="true"
             ac="given-name"
-            @input="(value) => (form.jobSeeker.firstName = value)"
+            @input="(value) => (form.jobSeeker.name.first = value)"
           />
           <AppInput
             label="last name"
             input-id="last-name"
             :req="true"
             ac="family-name"
-            @input="(value) => (form.jobSeeker.lastName = value)"
+            @input="(value) => (form.jobSeeker.name.last = value)"
           />
           <InputSelect
             label="Gender"
@@ -80,11 +80,17 @@
         </template>
         <template v-if="form.common.accType === 'business'">
           <AppInput
-            label="company name"
-            input-id="comp-name"
+            label="business name"
+            input-id="biz-name"
             :req="true"
             ac="organization"
-            @input="(value) => (form.business.compName = value)"
+            @input="(value) => (form.business.bizName = value)"
+          />
+          <InputTextarea
+            label="business profile"
+            text-area-id="biz-profile"
+            :req="true"
+            @input="(value) => (form.business.bizProfile = value)"
           />
           <AppInput
             label="registration number"
@@ -100,11 +106,11 @@
             @input="(value) => (form.business.address = value)"
           />
           <InputSelect
-            label="company size"
-            select-id="comp-size"
+            label="business size"
+            select-id="biz-size"
             :req="true"
-            :options="compSize"
-            @change="(value) => (form.business.compSize = value)"
+            :options="bizSize"
+            @change="(value) => (form.business.bizSize = value)"
           />
         </template>
         <button
@@ -142,8 +148,10 @@ export default {
           password: '',
         },
         jobSeeker: {
-          firstName: '',
-          lastName: '',
+          name: {
+            first: '',
+            last: '',
+          },
           gender: '',
           country: '',
           recentExp: {
@@ -156,10 +164,11 @@ export default {
           },
         },
         business: {
-          compName: '',
+          bizName: '',
+          bizProfile: '',
           regNum: '',
           address: '',
-          compSize: '',
+          bizSize: '',
         },
       },
       isFormSubmitted: false,
@@ -169,8 +178,8 @@ export default {
     ...mapGetters('acc-type', ['accType']),
     ...mapGetters('genders', ['genders']),
     ...mapGetters('countries', ['countries']),
-    ...mapGetters('comp-size', ['compSize']),
-    ...mapGetters('sign-up', ['recentExp', 'recentEdu']),
+    ...mapGetters('biz-size', ['bizSize']),
+    ...mapGetters('qualifications', ['recentExp', 'recentEdu']),
   },
   watch: {
     recentExp(newValue) {
@@ -180,16 +189,19 @@ export default {
       this.form.jobSeeker.recentEdu = newValue;
     },
   },
+  created() {
+    this.clearRecentExp();
+    this.clearRecentEdu();
+  },
   methods: {
     ...mapActions('countries', ['fetchCountries']),
-    ...mapActions('sign-up', ['clearRecentExp', 'clearRecentEdu']),
+    ...mapActions('qualifications', ['clearRecentExp', 'clearRecentEdu']),
     async signUp() {
       let formData = this.form.common;
-      if (this.form.common.accType === 'job-seeker') {
+      if (this.form.common.accType === 'job-seeker')
         formData = { ...formData, ...this.form.jobSeeker };
-      } else if (this.form.common.accType === 'business') {
+      else if (this.form.common.accType === 'business')
         formData = { ...formData, ...this.form.business };
-      }
       this.isFormSubmitted = true;
       await this.$axios
         .$post('/createAuth', formData, {
@@ -199,7 +211,7 @@ export default {
         })
         .then(() => {
           window.scrollTo({ top: 0, behavior: 'auto' });
-          this.$router.push('/home');
+          this.$router.push('/');
         });
       this.isFormSubmitted = false;
     },
