@@ -10,17 +10,19 @@ def update_business():
     data = request.get_json()
 
     business_id = data.get('businessId')
-    company_name = data.get('compName')
+    business_name = data.get('bizName')
+    business_profile = data.get('bizProfile') #new field
     registration_number = data.get('regNum')
     address = data.get('address')
-    company_size = data.get('compSize')
+    business_size = data.get('bizSize')
 
     business = {}
 
-    if company_name: business['name'] = company_name
+    if business_name: business['businessName'] = business_name
+    if business_profile: business['businessProfile'] = business_profile #new field
     if registration_number: business['registrationNumber'] = registration_number
     if address: business['address'] = address
-    if company_size: business['companySize'] = company_size
+    if business_size: business['businessSize'] = business_size
 
     mongo.db.businesses.update_one({"_id": ObjectId(business_id)}, {"$set": business})
 
