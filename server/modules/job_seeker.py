@@ -39,6 +39,9 @@ def update_job_seeker():
     field_study = data.get('recentEdu').get('fieldStudy')    
 
     job_seeker = {}
+    job_seeker['name'] = {}
+    job_seeker['recentExperience'] = {}
+    job_seeker['recentEducation'] = {}
 
     if first_name: job_seeker['name']['first'] = first_name
     if last_name: job_seeker['name']['last'] = last_name
