@@ -75,10 +75,8 @@ def update_job_posting():
     title = data.get('title')
     location = data.get('location')
     department = data.get('department')
-
     min_salary_range = data.get('salaryRange').get('min')
     max_salary_range = data.get('salaryRange').get('max')
-
     description = data.get('description')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
@@ -89,6 +87,7 @@ def update_job_posting():
     function = data.get('function')
 
     job_posting = {}
+    job_posting['salaryRange'] = {}
 
     if title: job_posting['title'] = title
     if location: job_posting['location'] = location
