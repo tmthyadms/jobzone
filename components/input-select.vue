@@ -48,11 +48,6 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      value: '',
-    };
-  },
   computed: {
     newSelectId() {
       return this.new ? `new-${this.selectId}` : this.selectId;
