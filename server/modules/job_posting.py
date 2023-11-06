@@ -4,11 +4,12 @@ from flask_pymongo import PyMongo
 mongo = PyMongo(app)
 from bson import ObjectId
 
-
+#TODO: 
 @app.route('/createJobPosting', methods=['POST'])
 def create_job_posting():
     data = request.get_json()
 
+    business_id = data.get('businessId') #new added
     title = data.get('title')
     location = data.get('location')
     department = data.get('department')
@@ -17,6 +18,9 @@ def create_job_posting():
     description = data.get('description')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
+    telecommuting = False #new field
+    has_business_logo = False #new field
+    has_questions = False #new field
     employment_type = data.get('employmentType')
     required_experience = data.get('requiredExp')
     required_education = data.get('requiredEdu')
@@ -34,11 +38,15 @@ def create_job_posting():
         'description': description,
         'requirements': requirements,
         'benefits': benefits,
+        'telecommuting': telecommuting,#new added
+        'hasBusinessLogo': has_business_logo, #new added
+        'hasQuestions': has_questions, #new added
         'employmentType': employment_type,
         'requiredExperience': required_experience,
         'requiredEducation': required_education, 
         'industry': industry,
-        'function': function
+        'function': function,
+        'businessId': business_id #new added
     }
 
     job_posting_id = mongo.db.jobpostings.insert_one(job_posting).inserted_id
@@ -66,7 +74,7 @@ def get_jobpostings():
 
     return job_postings
 
-
+#TODO: 
 @app.route('/updateJobPosting', methods=['POST'])
 def update_job_posting():
     data = request.get_json()
@@ -88,6 +96,8 @@ def update_job_posting():
 
     job_posting = {}
     job_posting['salaryRange'] = {}
+    job_posting['salaryRange']['min'] = ''
+    job_posting['salaryRange']['max'] = ''
 
     if title: job_posting['title'] = title
     if location: job_posting['location'] = location
