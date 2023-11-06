@@ -1,5 +1,5 @@
 from __main__ import app
-from flask import request
+from flask import request, jsonify
 from flask_pymongo import PyMongo
 mongo = PyMongo(app)
 from bson import ObjectId
@@ -18,9 +18,9 @@ def create_job_posting():
     description = data.get('description')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
-    telecommuting = False #new field
-    has_business_logo = False #new field
-    has_questions = False #new field
+    telecommuting = False 
+    has_business_logo = False 
+    has_questions = False 
     employment_type = data.get('employmentType')
     required_experience = data.get('requiredExp')
     required_education = data.get('requiredEdu')
@@ -49,7 +49,13 @@ def create_job_posting():
         'businessId': business_id 
     }
 
+
     job_posting_id = mongo.db.jobpostings.insert_one(job_posting).inserted_id
+
+    business = mongo.db.businesses.find_one({ "_id": ObjectId(business_id) })
+    
+    job_posting['businessProfile'] = business['businessProfile']
+    job_posting.pop('businessId', None)
 
     return str(job_posting_id)
 
