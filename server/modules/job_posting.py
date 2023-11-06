@@ -4,12 +4,12 @@ from flask_pymongo import PyMongo
 mongo = PyMongo(app)
 from bson import ObjectId
 
-#TODO: 
+
 @app.route('/createJobPosting', methods=['POST'])
 def create_job_posting():
     data = request.get_json()
 
-    business_id = data.get('businessId') #new added
+    business_id = data.get('bizId') 
     title = data.get('title')
     location = data.get('location')
     department = data.get('department')
@@ -38,15 +38,15 @@ def create_job_posting():
         'description': description,
         'requirements': requirements,
         'benefits': benefits,
-        'telecommuting': telecommuting,#new added
-        'hasBusinessLogo': has_business_logo, #new added
-        'hasQuestions': has_questions, #new added
+        'telecommuting': telecommuting,
+        'hasBusinessLogo': has_business_logo, 
+        'hasQuestions': has_questions, 
         'employmentType': employment_type,
         'requiredExperience': required_experience,
         'requiredEducation': required_education, 
         'industry': industry,
         'function': function,
-        'businessId': business_id #new added
+        'businessId': business_id 
     }
 
     job_posting_id = mongo.db.jobpostings.insert_one(job_posting).inserted_id
@@ -74,7 +74,7 @@ def get_jobpostings():
 
     return job_postings
 
-#TODO: 
+
 @app.route('/updateJobPosting', methods=['POST'])
 def update_job_posting():
     data = request.get_json()
