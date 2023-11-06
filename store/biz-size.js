@@ -1,6 +1,6 @@
 export const state = () => ({
-  compSize: [
-    { name: 'Select your company size', value: '' },
+  bizSize: [
+    { name: 'Select your business size', value: '' },
     { name: '1-10', value: '1-10' },
     { name: '11-50', value: '11-50' },
     { name: '51-200', value: '51-200' },
@@ -13,7 +13,5 @@ export const state = () => ({
 });
 
 export const getters = {
-  compSize(state) {
-    return state.compSize;
-  },
+  bizSize: (state) => state.bizSize,
 };
