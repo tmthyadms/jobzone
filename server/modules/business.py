@@ -9,7 +9,7 @@ from bson import ObjectId
 def update_business():
     data = request.get_json()
 
-    business_id = data.get('businessId')
+    business_id = data.get('bizId')
     business_name = data.get('bizName')
     business_profile = data.get('bizProfile') #new field
     registration_number = data.get('regNum')
@@ -32,7 +32,7 @@ def update_business():
 @app.route('/business', methods=['POST', 'GET'])
 def get_business():
     data = request.get_json()
-    business_id = data.get('businessId')
+    business_id = data.get('bizId')
     business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(business_id)})
     business['_id'] = str(business['_id'])
 

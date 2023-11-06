@@ -1,15 +1,15 @@
 from __main__ import app
-from flask import request
+from flask import request, jsonify
 from flask_pymongo import PyMongo
 mongo = PyMongo(app)
 from bson import ObjectId
 
-#TODO: 
+
 @app.route('/createJobPosting', methods=['POST'])
 def create_job_posting():
     data = request.get_json()
 
-    business_id = data.get('businessId') #new added
+    business_id = data.get('bizId') 
     title = data.get('title')
     location = data.get('location')
     department = data.get('department')
@@ -18,9 +18,9 @@ def create_job_posting():
     description = data.get('description')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
-    telecommuting = False #new field
-    has_business_logo = False #new field
-    has_questions = False #new field
+    telecommuting = False 
+    has_business_logo = False 
+    has_questions = False 
     employment_type = data.get('employmentType')
     required_experience = data.get('requiredExp')
     required_education = data.get('requiredEdu')
@@ -38,18 +38,24 @@ def create_job_posting():
         'description': description,
         'requirements': requirements,
         'benefits': benefits,
-        'telecommuting': telecommuting,#new added
-        'hasBusinessLogo': has_business_logo, #new added
-        'hasQuestions': has_questions, #new added
+        'telecommuting': telecommuting,
+        'hasBusinessLogo': has_business_logo, 
+        'hasQuestions': has_questions, 
         'employmentType': employment_type,
         'requiredExperience': required_experience,
         'requiredEducation': required_education, 
         'industry': industry,
         'function': function,
-        'businessId': business_id #new added
+        'businessId': business_id 
     }
 
+
     job_posting_id = mongo.db.jobpostings.insert_one(job_posting).inserted_id
+
+    business = mongo.db.businesses.find_one({ "_id": ObjectId(business_id) })
+    
+    job_posting['businessProfile'] = business['businessProfile']
+    job_posting.pop('businessId', None)
 
     return str(job_posting_id)
 
@@ -74,7 +80,7 @@ def get_jobpostings():
 
     return job_postings
 
-#TODO: 
+
 @app.route('/updateJobPosting', methods=['POST'])
 def update_job_posting():
     data = request.get_json()

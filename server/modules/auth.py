@@ -89,7 +89,7 @@ def create_auth():
         business = {}
         business['_id'] = auth_id
         business_name = data.get('bizName')
-        business_profile = data.get('bizProfile') #new field
+        business_profile = data.get('bizProfile') 
         registration_number = data.get('regNum') 
         address = data.get('address')
         business_size = data.get('bizSize')
