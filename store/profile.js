@@ -43,7 +43,6 @@ export const mutations = {
     state.common.id = payload._id;
     state.common.accType = payload.accountType;
     state.common.email = payload.email;
-    console.log('state.common:', state.common);
   },
   setPlaceholder(state, payload) {
     state.common.placeholder = payload;
@@ -65,7 +64,6 @@ export const mutations = {
         fieldStudy: payload.recentEducation.fieldStudy,
       },
     };
-    console.log('state.jobSeeker:', state.jobSeeker);
   },
   setBusiness(state, payload) {
     state.business = {
@@ -75,11 +73,9 @@ export const mutations = {
       address: payload.address,
       bizSize: payload.businessSize,
     };
-    console.log('state.business:', state.business);
   },
   setProfile(state, payload) {
-    state.profile = state.common;
-    state.profile = { ...state.profile, ...payload };
+    state.profile = { ...state.common, ...payload };
   },
 };
 
@@ -111,7 +107,7 @@ export const actions = {
   async fetchBusiness({ commit }, payload) {
     const dataBusiness = await this.$axios.$post(
       '/business',
-      { businessId: payload },
+      { bizId: payload },
       { headers: { 'Content-Type': 'application/json' } }
     );
     commit('setBusiness', dataBusiness);
@@ -129,7 +125,7 @@ export const actions = {
         commit('setProfile', state.jobSeeker);
       } else if (accType === 'business') {
         await dispatch('fetchBusiness', payload);
-        let placeholder = state.business.compName[0];
+        let placeholder = state.business.bizName[0];
         placeholder = placeholder.toUpperCase();
         commit('setPlaceholder', placeholder);
         commit('setProfile', state.business);
