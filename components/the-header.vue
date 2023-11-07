@@ -6,7 +6,7 @@
       <div class="flex-1">
         <AppComboMark :link="true" />
       </div>
-      <div class="flex-none">
+      <div class="flex-none gap-2">
         <div id="tip-theme" class="tooltip tooltip-left" :data-tip="themeTip">
           <label
             role="button"
@@ -16,6 +16,21 @@
             <IconMoon :width="20" class="swap-on" />
             <IconSun :width="20" class="swap-off" />
           </label>
+        </div>
+        <div class="dropdown dropdown-bottom dropdown-end">
+          <label
+            tabindex="0"
+            class="btn btn-primary btn-circle avatar online placholder"
+          >
+            <div class="rounded-full">jz</div>
+          </label>
+          <ul
+            tabindex="0"
+            class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li><a>Profile</a></li>
+            <li><button type="button" @click="signOut">Sign Out</button></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -69,6 +84,11 @@ export default {
         if (window.scrollY > 0) header.classList.add('shadow', 'ease-out');
         else header.classList.remove('shadow', 'ease-in');
       };
+    },
+    signOut() {
+      // TODO: clear common.id from profile store
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      this.$router.push('/');
     },
   },
 };
