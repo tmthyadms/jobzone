@@ -15,7 +15,7 @@ def create_job_posting():
     department = data.get('department')
     min_salary_range = data.get('salaryRange').get('min')
     max_salary_range = data.get('salaryRange').get('max')
-    description = data.get('description')
+    description = data.get('desc')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
     telecommuting = False 
@@ -91,7 +91,7 @@ def update_job_posting():
     department = data.get('department')
     min_salary_range = data.get('salaryRange').get('min')
     max_salary_range = data.get('salaryRange').get('max')
-    description = data.get('description')
+    description = data.get('desc')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
     employment_type = data.get('employmentType')
