@@ -2,23 +2,18 @@
   <AppHero>
     <AppCard>
       <template #body>
-        <h1>User _id: {{ id }}</h1>
+        <h1>{{ profile }}</h1>
       </template>
     </AppCard>
   </AppHero>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-  data() {
-    return {
-      id: '',
-    };
-  },
-  async fetch() {
-    const data = await this.$axios.$post('/auths');
-    this.id = data[0]._id;
-    console.log(this.id);
+  computed: {
+    ...mapGetters('profile', ['profile']),
   },
 };
 </script>
