@@ -6,6 +6,9 @@
   .app-flex {
     @apply flex flex-col lg:flex-row gap-x-6 gap-y-6 lg:gap-y-12;
   }
+  .app-layout {
+    @apply flex flex-col justify-between min-h-screen;
+  }
 }
 
 @layer components {
