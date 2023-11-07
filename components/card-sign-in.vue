@@ -8,21 +8,25 @@
         Sign in to unlock <br class="hidden lg:inline" />
         your <br class="inline lg:hidden" />secure future
       </h2>
-      <form action="" class="grid grid-cols-1 gap-6">
+      <form class="grid grid-cols-1 gap-6" @submit.prevent="signIn">
         <AppInput
           label="email"
           type="email"
           input-id="email"
           :req="true"
           ac="email"
+          @input="(value) => (form.email = value)"
         />
-        <InputPassword />
-        <!-- <button type="submit" name="sign-in" class="btn btn-block btn-primary">
-          sign in
-        </button> -->
-        <NuxtLink to="/home" class="btn btn-block btn-primary">
-          sign in
-        </NuxtLink>
+        <InputPassword @input="(value) => (form.password = value)" />
+        <button
+          type="submit"
+          name="sign-in"
+          class="btn btn-block btn-primary"
+          :disabled="isFormSubmitted"
+        >
+          <span v-if="isFormSubmitted" class="loading loading-infinity"></span>
+          <span v-else>sign in</span>
+        </button>
       </form>
       <NuxtLink
         to="/sign-up"
@@ -36,7 +40,39 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   events: ['flip'],
+  data() {
+    return {
+      form: {
+        email: '',
+        password: '',
+      },
+      isFormSubmitted: false,
+    };
+  },
+  methods: {
+    ...mapActions('profile', ['fetchProfile']),
+    async signIn() {
+      try {
+        this.isFormSubmitted = true;
+        const response = await this.$axios.$post('/login', this.form, {
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (!response) {
+          this.isFormSubmitted = false;
+          return;
+        }
+        await this.fetchProfile(response);
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        this.isFormSubmitted = false;
+        this.$router.push('/home');
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
 };
 </script>
