@@ -19,7 +19,7 @@ def create_job_posting():
     requirements = data.get('requirements')
     benefits = data.get('benefits')
     #TODO: telecommuting tukar
-    telecommuting = True 
+    telecommuting = False 
     has_business_logo = False 
     has_questions = False 
     employment_type = data.get('employmentType')
