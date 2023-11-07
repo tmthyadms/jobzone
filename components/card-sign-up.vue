@@ -203,17 +203,12 @@ export default {
       else if (this.form.common.accType === 'business')
         formData = { ...formData, ...this.form.business };
       this.isFormSubmitted = true;
-      await this.$axios
-        .$post('/createAuth', formData, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-        .then(() => {
-          window.scrollTo({ top: 0, behavior: 'auto' });
-          this.$router.push('/');
-        });
+      await this.$axios.$post('/createAuth', formData, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      window.scrollTo({ top: 0, behavior: 'auto' });
       this.isFormSubmitted = false;
+      this.$router.push('/');
     },
   },
   async fetch() {
