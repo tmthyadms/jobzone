@@ -32,6 +32,7 @@
 import { mapActions } from 'vuex';
 
 export default {
+  layout: 'pre-sign-in',
   methods: {
     ...mapActions('qualifications', ['setRecentExp', 'setRecentEdu']),
     addExp() {

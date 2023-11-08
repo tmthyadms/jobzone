@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapMutations, mapActions } from 'vuex';
 
 export default {
   events: ['flip'],
@@ -54,6 +54,7 @@ export default {
     };
   },
   methods: {
+    ...mapMutations('auth', ['setHasSignedIn']),
     ...mapActions('profile', ['fetchProfile']),
     async signIn() {
       try {
@@ -65,6 +66,7 @@ export default {
           this.isFormSubmitted = false;
           return;
         }
+        this.setHasSignedIn(true); // TODO: try to do this in profile store
         await this.fetchProfile(response);
         window.scrollTo({ top: 0, behavior: 'auto' });
         this.isFormSubmitted = false;

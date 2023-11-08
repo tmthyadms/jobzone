@@ -17,7 +17,7 @@
             <IconSun :width="20" class="swap-off" />
           </label>
         </div>
-        <div class="dropdown dropdown-bottom dropdown-end">
+        <div v-if="profile" class="dropdown dropdown-bottom dropdown-end">
           <label
             tabindex="0"
             class="btn btn-primary btn-circle avatar online placholder"
@@ -38,7 +38,14 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
+  props: {
+    profile: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
       theme: {
@@ -72,6 +79,7 @@ export default {
     this.shadowOnScroll();
   },
   methods: {
+    ...mapMutations('auth', ['setHasSignedIn']),
     setTheme(isDarkMode) {
       document.body.parentNode.dataset.theme = isDarkMode
         ? this.theme.dark.current
@@ -86,9 +94,9 @@ export default {
       };
     },
     signOut() {
-      // TODO: clear common.id from profile store
       window.scrollTo({ top: 0, behavior: 'auto' });
       this.$router.push('/');
+      this.setHasSignedIn(false);
     },
   },
 };

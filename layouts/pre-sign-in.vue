@@ -1,15 +1,9 @@
 <template>
   <div class="app-layout">
-    <TheHeader :profile="true" />
+    <TheHeader />
     <main>
       <Nuxt />
     </main>
     <TheFooter />
   </div>
 </template>
-
-<script>
-export default {
-  middleware: 'auth',
-};
-</script>
