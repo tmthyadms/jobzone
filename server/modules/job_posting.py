@@ -18,6 +18,7 @@ def create_job_posting():
     description = data.get('desc')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
+    #TODO: telecommuting tukar
     telecommuting = False 
     has_business_logo = False 
     has_questions = False 
@@ -49,13 +50,29 @@ def create_job_posting():
         'businessId': business_id 
     }
 
-
     job_posting_id = mongo.db.jobpostings.insert_one(job_posting).inserted_id
 
     business = mongo.db.businesses.find_one({ "_id": ObjectId(business_id) })
     
+    if 'telecommuting' in job_posting and job_posting['telecommuting'] is False:
+      job_posting['telecommuting'] = 0
+    elif 'telecommuting' in job_posting and job_posting['telecommuting'] is True:
+      job_posting['telecommuting'] = 1
+
+    if 'hasBusinessLogo' in job_posting and job_posting['hasBusinessLogo'] is False:
+      job_posting['hasBusinessLogo'] = 0
+    elif 'telecommuting' in job_posting and job_posting['telecommuting'] is True:
+      job_posting['hasBusinessLogo'] = 1
+
+    if 'hasQuestions' in job_posting and job_posting['hasQuestions'] is False:
+      job_posting['hasQuestions'] = 0
+    elif 'hasQuestions' in job_posting and job_posting['hasQuestions'] is True:
+      job_posting['hasQuestions'] = 1
+
     job_posting['businessProfile'] = business['businessProfile']
     job_posting.pop('businessId', None)
+
+    print(job_posting)
 
     return str(job_posting_id)
 
