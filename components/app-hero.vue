@@ -16,14 +16,13 @@
         class="max-w-sm rounded-box shadow-2xl"
       />
       <div class="flex-1">
-        <div v-if="title || desc" class="mx-auto max-w-md">
+        <div v-if="title || desc" class="mx-auto max-w-xl">
           <h1
             v-if="title"
-            class="text-5xl font-bold capitalize text-center"
+            class="text-3xl lg:text-5xl font-bold capitalize text-center"
             :class="{ 'mb-6': desc, 'lg:text-start': !center }"
-          >
-            {{ title }}
-          </h1>
+            v-html="title"
+          ></h1>
           <p
             v-if="desc"
             class="md:text-lg xl:text-2xl font-light text-center"
