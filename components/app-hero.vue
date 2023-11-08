@@ -5,7 +5,6 @@
       class="hero-content"
       :class="{
         'text-neutral-content': img,
-        'text-center': center,
         'flex-col-reverse lg:flex-row-reverse': !center,
       }"
     >
@@ -20,16 +19,17 @@
         <div v-if="title || desc" class="mx-auto max-w-md">
           <h1
             v-if="title"
-            class="text-5xl font-bold capitalize text-center lg:text-start"
-            :class="{ 'mb-6': desc }"
+            class="text-5xl font-bold capitalize text-center"
+            :class="{ 'mb-6': desc, 'lg:text-start': !center }"
           >
             {{ title }}
           </h1>
           <p
             v-if="desc"
-            class="md:text-lg xl:text-2xl font-light text-center lg:text-start"
+            class="md:text-lg xl:text-2xl font-light text-center"
             :class="{
               'mb-6': !!this.$slots.default,
+              'lg:text-start': !center,
               'opacity-60': !img,
             }"
             v-html="desc"
