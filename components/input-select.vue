@@ -5,6 +5,7 @@
       :name="newSelectId"
       class="form-select app-field"
       :required="req"
+      :disabled="disabled"
       :autocomplete="ac"
       @change="$emit('change', $event.target.value)"
     >
@@ -37,6 +38,9 @@ export default {
       type: Boolean,
     },
     req: {
+      type: Boolean,
+    },
+    disabled: {
       type: Boolean,
     },
     ac: {

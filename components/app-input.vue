@@ -1,6 +1,8 @@
 <template>
   <label class="block">
-    <span class="text-xs font-semibold capitalize align-top opacity-60"
+    <span
+      v-if="label"
+      class="text-xs font-semibold capitalize align-top opacity-60"
       >{{ label }} <span v-if="req">*</span></span
     >
     <slot>
@@ -11,6 +13,7 @@
         :placeholder="inputPlaceholder"
         class="form-input app-field"
         :required="req"
+        :disabled="disabled"
         :autocomplete="ac"
         @input="$emit('input', $event.target.value)"
       />
@@ -24,7 +27,6 @@ export default {
   props: {
     label: {
       type: String,
-      required: true,
     },
     type: {
       type: String,
@@ -40,6 +42,9 @@ export default {
       type: Boolean,
     },
     req: {
+      type: Boolean,
+    },
+    disabled: {
       type: Boolean,
     },
     ac: {

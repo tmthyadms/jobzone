@@ -9,6 +9,7 @@
         class="form-input app-field pr-5"
         minlength="8"
         required
+        :disabled="disabled"
         :autocomplete="passwordAc"
         @input="$emit('input', $event.target.value)"
       />
@@ -30,6 +31,7 @@
 
 <script>
 export default {
+  emits: ['input'],
   data() {
     return {
       password: {
@@ -47,6 +49,9 @@ export default {
   },
   props: {
     new: {
+      type: Boolean,
+    },
+    disabled: {
       type: Boolean,
     },
   },

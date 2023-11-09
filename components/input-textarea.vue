@@ -6,6 +6,7 @@
       :placeholder="inputPlaceholder"
       class="form-textarea app-field"
       :required="req"
+      :disabled="disabled"
       :autocomplete="ac"
       @input="$emit('input', $event.target.value)"
     ></textarea>
@@ -30,6 +31,9 @@ export default {
       type: Boolean,
     },
     req: {
+      type: Boolean,
+    },
+    disabled: {
       type: Boolean,
     },
     ac: {
