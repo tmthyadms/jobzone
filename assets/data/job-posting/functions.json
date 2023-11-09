@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Please select the functions",
+    "value": ""
+  },
+  {
+    "name": "Information Technology",
+    "value": "Information Technology"
+  },
+  {
+    "name": "Sales",
+    "value": "Sales"
+  },
+  {
+    "name": "Engineering",
+    "value": "Engineering"
+  },
+  {
+    "name": "Customer Service",
+    "value": "Customer Service"
+  },
+  {
+    "name": "Marketing",
+    "value": "Marketing"
+  },
+  {
+    "name": "Administrative",
+    "value": "Administrative"
+  },
+  {
+    "name": "Design",
+    "value": "Design"
+  },
+  {
+    "name": "Health Care Provider",
+    "value": "Health Care Provider"
+  },
+  {
+    "name": "Other",
+    "value": "Other"
+  },
+  {
+    "name": "Education",
+    "value": "Education"
+  },
+  {
+    "name": "Management",
+    "value": "Management"
+  },
+  {
+    "name": "Business Development",
+    "value": "Business Development"
+  },
+  {
+    "name": "Accounting/Auditing",
+    "value": "Accounting/Auditing"
+  },
+  {
+    "name": "Human Resources",
+    "value": "Human Resources"
+  },
+  {
+    "name": "Project Management",
+    "value": "Project Management"
+  },
+  {
+    "name": "Finance",
+    "value": "Finance"
+  },
+  {
+    "name": "Consulting",
+    "value": "Consulting"
+  },
+  {
+    "name": "Writing/Editing",
+    "value": "Writing/Editing"
+  },
+  {
+    "name": "Art/Creative",
+    "value": "Art/Creative"
+  },
+  {
+    "name": "Production",
+    "value": "Production"
+  },
+  {
+    "name": "Product Management",
+    "value": "Product Management"
+  },
+  {
+    "name": "Quality Assurance",
+    "value": "Quality Assurance"
+  },
+  {
+    "name": "Advertising",
+    "value": "Advertising"
+  },
+  {
+    "name": "Business Analyst",
+    "value": "Business Analyst"
+  },
+  {
+    "name": "Data Analyst",
+    "value": "Data Analyst"
+  },
+  {
+    "name": "Public Relations",
+    "value": "Public Relations"
+  },
+  {
+    "name": "Manufacturing",
+    "value": "Manufacturing"
+  },
+  {
+    "name": "General Business",
+    "value": "General Business"
+  },
+  {
+    "name": "Research",
+    "value": "Research"
+  },
+  {
+    "name": "Legal",
+    "value": "Legal"
+  },
+  {
+    "name": "Strategy/Planning",
+    "value": "Strategy/Planning"
+  },
+  {
+    "name": "Training",
+    "value": "Training"
+  },
+  {
+    "name": "Supply Chain",
+    "value": "Supply Chain"
+  },
+  {
+    "name": "Financial Analyst",
+    "value": "Financial Analyst"
+  },
+  {
+    "name": "Distribution",
+    "value": "Distribution"
+  },
+  {
+    "name": "Purchasing",
+    "value": "Purchasing"
+  },
+  {
+    "name": "Science",
+    "value": "Science"
+  }
+]

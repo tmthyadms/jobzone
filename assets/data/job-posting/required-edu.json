@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Please select the required education",
+    "value": ""
+  },
+  {
+    "name": "Bachelor's Degree",
+    "value": "Bachelor's Degree"
+  },
+  {
+    "name": "High School or equivalent",
+    "value": "High School or equivalent"
+  },
+  {
+    "name": "Unspecified",
+    "value": "Unspecified"
+  },
+  {
+    "name": "Master's Degree",
+    "value": "Master's Degree"
+  },
+  {
+    "name": "Associate Degree",
+    "value": "Associate Degree"
+  },
+  {
+    "name": "Certification",
+    "value": "Certification"
+  },
+  {
+    "name": "Some College Coursework Completed",
+    "value": "Some College Coursework Completed"
+  },
+  {
+    "name": "Professional",
+    "value": "Professional"
+  },
+  {
+    "name": "Vocational",
+    "value": "Vocational"
+  },
+  {
+    "name": "Some High School Coursework",
+    "value": "Some High School Coursework"
+  },
+  {
+    "name": "Doctorate",
+    "value": "Doctorate"
+  },
+  {
+    "name": "Vocational - HS Diploma",
+    "value": "Vocational - HS Diploma"
+  },
+  {
+    "name": "Vocational - Degree",
+    "value": "Vocational - Degree"
+  }
+]

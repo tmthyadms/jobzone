@@ -1,0 +1,530 @@
+[
+  {
+    "name": "Please select the industry",
+    "value": ""
+  },
+  {
+    "name": "Information Technology and Services",
+    "value": "Information Technology and Services"
+  },
+  {
+    "name": "Computer Software",
+    "value": "Computer Software"
+  },
+  {
+    "name": "Internet",
+    "value": "Internet"
+  },
+  {
+    "name": "Marketing and Advertising",
+    "value": "Marketing and Advertising"
+  },
+  {
+    "name": "Education Management",
+    "value": "Education Management"
+  },
+  {
+    "name": "Financial Services",
+    "value": "Financial Services"
+  },
+  {
+    "name": "Hospital & Health Care",
+    "value": "Hospital & Health Care"
+  },
+  {
+    "name": "Consumer Services",
+    "value": "Consumer Services"
+  },
+  {
+    "name": "Telecommunications",
+    "value": "Telecommunications"
+  },
+  {
+    "name": "Oil & Energy",
+    "value": "Oil & Energy"
+  },
+  {
+    "name": "Retail",
+    "value": "Retail"
+  },
+  {
+    "name": "Real Estate",
+    "value": "Real Estate"
+  },
+  {
+    "name": "Accounting",
+    "value": "Accounting"
+  },
+  {
+    "name": "Construction",
+    "value": "Construction"
+  },
+  {
+    "name": "E-Learning",
+    "value": "E-Learning"
+  },
+  {
+    "name": "Management Consulting",
+    "value": "Management Consulting"
+  },
+  {
+    "name": "Design",
+    "value": "Design"
+  },
+  {
+    "name": "Health, Wellness and Fitness",
+    "value": "Health, Wellness and Fitness"
+  },
+  {
+    "name": "Staffing and Recruiting",
+    "value": "Staffing and Recruiting"
+  },
+  {
+    "name": "Insurance",
+    "value": "Insurance"
+  },
+  {
+    "name": "Automotive",
+    "value": "Automotive"
+  },
+  {
+    "name": "Logistics and Supply Chain",
+    "value": "Logistics and Supply Chain"
+  },
+  {
+    "name": "Human Resources",
+    "value": "Human Resources"
+  },
+  {
+    "name": "Online Media",
+    "value": "Online Media"
+  },
+  {
+    "name": "Apparel & Fashion",
+    "value": "Apparel & Fashion"
+  },
+  {
+    "name": "Legal Services",
+    "value": "Legal Services"
+  },
+  {
+    "name": "Facilities Services",
+    "value": "Facilities Services"
+  },
+  {
+    "name": "Hospitality",
+    "value": "Hospitality"
+  },
+  {
+    "name": "Computer Games",
+    "value": "Computer Games"
+  },
+  {
+    "name": "Banking",
+    "value": "Banking"
+  },
+  {
+    "name": "Building Materials",
+    "value": "Building Materials"
+  },
+  {
+    "name": "Leisure, Travel & Tourism",
+    "value": "Leisure, Travel & Tourism"
+  },
+  {
+    "name": "Nonprofit Organization Management",
+    "value": "Nonprofit Organization Management"
+  },
+  {
+    "name": "Entertainment",
+    "value": "Entertainment"
+  },
+  {
+    "name": "Electrical/Electronic Manufacturing",
+    "value": "Electrical/Electronic Manufacturing"
+  },
+  {
+    "name": "Food & Beverages",
+    "value": "Food & Beverages"
+  },
+  {
+    "name": "Cosmetics",
+    "value": "Cosmetics"
+  },
+  {
+    "name": "Airlines/Aviation",
+    "value": "Airlines/Aviation"
+  },
+  {
+    "name": "Consumer Goods",
+    "value": "Consumer Goods"
+  },
+  {
+    "name": "Consumer Electronics",
+    "value": "Consumer Electronics"
+  },
+  {
+    "name": "Medical Practice",
+    "value": "Medical Practice"
+  },
+  {
+    "name": "Public Relations and Communications",
+    "value": "Public Relations and Communications"
+  },
+  {
+    "name": "Civic & Social Organization",
+    "value": "Civic & Social Organization"
+  },
+  {
+    "name": "Market Research",
+    "value": "Market Research"
+  },
+  {
+    "name": "Transportation/Trucking/Railroad",
+    "value": "Transportation/Trucking/Railroad"
+  },
+  {
+    "name": "Restaurants",
+    "value": "Restaurants"
+  },
+  {
+    "name": "Warehousing",
+    "value": "Warehousing"
+  },
+  {
+    "name": "Events Services",
+    "value": "Events Services"
+  },
+  {
+    "name": "Broadcast Media",
+    "value": "Broadcast Media"
+  },
+  {
+    "name": "Computer & Network Security",
+    "value": "Computer & Network Security"
+  },
+  {
+    "name": "Environmental Services",
+    "value": "Environmental Services"
+  },
+  {
+    "name": "Media Production",
+    "value": "Media Production"
+  },
+  {
+    "name": "Computer Networking",
+    "value": "Computer Networking"
+  },
+  {
+    "name": "Food Production",
+    "value": "Food Production"
+  },
+  {
+    "name": "Pharmaceuticals",
+    "value": "Pharmaceuticals"
+  },
+  {
+    "name": "Gambling & Casinos",
+    "value": "Gambling & Casinos"
+  },
+  {
+    "name": "Publishing",
+    "value": "Publishing"
+  },
+  {
+    "name": "Biotechnology",
+    "value": "Biotechnology"
+  },
+  {
+    "name": "Mechanical or Industrial Engineering",
+    "value": "Mechanical or Industrial Engineering"
+  },
+  {
+    "name": "Computer Hardware",
+    "value": "Computer Hardware"
+  },
+  {
+    "name": "Utilities",
+    "value": "Utilities"
+  },
+  {
+    "name": "Graphic Design",
+    "value": "Graphic Design"
+  },
+  {
+    "name": "Printing",
+    "value": "Printing"
+  },
+  {
+    "name": "Security and Investigations",
+    "value": "Security and Investigations"
+  },
+  {
+    "name": "Research",
+    "value": "Research"
+  },
+  {
+    "name": "Venture Capital & Private Equity",
+    "value": "Venture Capital & Private Equity"
+  },
+  {
+    "name": "Information Services",
+    "value": "Information Services"
+  },
+  {
+    "name": "Aviation & Aerospace",
+    "value": "Aviation & Aerospace"
+  },
+  {
+    "name": "Farming",
+    "value": "Farming"
+  },
+  {
+    "name": "Mental Health Care",
+    "value": "Mental Health Care"
+  },
+  {
+    "name": "Sports",
+    "value": "Sports"
+  },
+  {
+    "name": "Chemicals",
+    "value": "Chemicals"
+  },
+  {
+    "name": "Government Administration",
+    "value": "Government Administration"
+  },
+  {
+    "name": "Writing and Editing",
+    "value": "Writing and Editing"
+  },
+  {
+    "name": "Law Practice",
+    "value": "Law Practice"
+  },
+  {
+    "name": "Outsourcing/Offshoring",
+    "value": "Outsourcing/Offshoring"
+  },
+  {
+    "name": "Medical Devices",
+    "value": "Medical Devices"
+  },
+  {
+    "name": "Business Supplies and Equipment",
+    "value": "Business Supplies and Equipment"
+  },
+  {
+    "name": "Fund-Raising",
+    "value": "Fund-Raising"
+  },
+  {
+    "name": "Professional Training & Coaching",
+    "value": "Professional Training & Coaching"
+  },
+  {
+    "name": "Wholesale",
+    "value": "Wholesale"
+  },
+  {
+    "name": "Government Relations",
+    "value": "Government Relations"
+  },
+  {
+    "name": "Semiconductors",
+    "value": "Semiconductors"
+  },
+  {
+    "name": "Machinery",
+    "value": "Machinery"
+  },
+  {
+    "name": "Higher Education",
+    "value": "Higher Education"
+  },
+  {
+    "name": "Law Enforcement",
+    "value": "Law Enforcement"
+  },
+  {
+    "name": "Translation and Localization",
+    "value": "Translation and Localization"
+  },
+  {
+    "name": "Architecture & Planning",
+    "value": "Architecture & Planning"
+  },
+  {
+    "name": "Music",
+    "value": "Music"
+  },
+  {
+    "name": "Civil Engineering",
+    "value": "Civil Engineering"
+  },
+  {
+    "name": "Defense & Space",
+    "value": "Defense & Space"
+  },
+  {
+    "name": "Renewables & Environment",
+    "value": "Renewables & Environment"
+  },
+  {
+    "name": "Program Development",
+    "value": "Program Development"
+  },
+  {
+    "name": "Individual & Family Services",
+    "value": "Individual & Family Services"
+  },
+  {
+    "name": "International Trade and Development",
+    "value": "International Trade and Development"
+  },
+  {
+    "name": "Veterinary",
+    "value": "Veterinary"
+  },
+  {
+    "name": "Executive Office",
+    "value": "Executive Office"
+  },
+  {
+    "name": "Photography",
+    "value": "Photography"
+  },
+  {
+    "name": "Industrial Automation",
+    "value": "Industrial Automation"
+  },
+  {
+    "name": "Public Safety",
+    "value": "Public Safety"
+  },
+  {
+    "name": "Investment Management",
+    "value": "Investment Management"
+  },
+  {
+    "name": "Motion Pictures and Film",
+    "value": "Motion Pictures and Film"
+  },
+  {
+    "name": "Primary/Secondary Education",
+    "value": "Primary/Secondary Education"
+  },
+  {
+    "name": "Religious Institutions",
+    "value": "Religious Institutions"
+  },
+  {
+    "name": "Import and Export",
+    "value": "Import and Export"
+  },
+  {
+    "name": "Packaging and Containers",
+    "value": "Packaging and Containers"
+  },
+  {
+    "name": "Package/Freight Delivery",
+    "value": "Package/Freight Delivery"
+  },
+  {
+    "name": "Capital Markets",
+    "value": "Capital Markets"
+  },
+  {
+    "name": "Animation",
+    "value": "Animation"
+  },
+  {
+    "name": "Investment Banking",
+    "value": "Investment Banking"
+  },
+  {
+    "name": "Luxury Goods & Jewelry",
+    "value": "Luxury Goods & Jewelry"
+  },
+  {
+    "name": "Fishery",
+    "value": "Fishery"
+  },
+  {
+    "name": "Commercial Real Estate",
+    "value": "Commercial Real Estate"
+  },
+  {
+    "name": "Philanthropy",
+    "value": "Philanthropy"
+  },
+  {
+    "name": "Wireless",
+    "value": "Wireless"
+  },
+  {
+    "name": "Public Policy",
+    "value": "Public Policy"
+  },
+  {
+    "name": "Performing Arts",
+    "value": "Performing Arts"
+  },
+  {
+    "name": "Plastics",
+    "value": "Plastics"
+  },
+  {
+    "name": "Mining & Metals",
+    "value": "Mining & Metals"
+  },
+  {
+    "name": "Furniture",
+    "value": "Furniture"
+  },
+  {
+    "name": "Maritime",
+    "value": "Maritime"
+  },
+  {
+    "name": "Libraries",
+    "value": "Libraries"
+  },
+  {
+    "name": "Nanotechnology",
+    "value": "Nanotechnology"
+  },
+  {
+    "name": "Textiles",
+    "value": "Textiles"
+  },
+  {
+    "name": "Military",
+    "value": "Military"
+  },
+  {
+    "name": "Alternative Dispute Resolution",
+    "value": "Alternative Dispute Resolution"
+  },
+  {
+    "name": "Shipbuilding",
+    "value": "Shipbuilding"
+  },
+  {
+    "name": "Sporting Goods",
+    "value": "Sporting Goods"
+  },
+  {
+    "name": "Museums and Institutions",
+    "value": "Museums and Institutions"
+  },
+  {
+    "name": "Wine and Spirits",
+    "value": "Wine and Spirits"
+  },
+  {
+    "name": "Ranching",
+    "value": "Ranching"
+  }
+]

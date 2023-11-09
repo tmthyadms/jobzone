@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Please select the required experience",
+    "value": ""
+  },
+  {
+    "name": "Mid-Senior level",
+    "value": "Mid-Senior level"
+  },
+  {
+    "name": "Entry level",
+    "value": "Entry level"
+  },
+  {
+    "name": "Associate",
+    "value": "Associate"
+  },
+  {
+    "name": "Not Applicable",
+    "value": "Not Applicable"
+  },
+  {
+    "name": "Director",
+    "value": "Director"
+  },
+  {
+    "name": "Internship",
+    "value": "Internship"
+  },
+  {
+    "name": "Executive",
+    "value": "Executive"
+  }
+]
