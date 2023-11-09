@@ -8,7 +8,7 @@
         Sign in to unlock <br class="hidden lg:inline" />
         your <br class="inline lg:hidden" />secure future
       </h2>
-      <form class="grid grid-cols-1 gap-6" @submit.prevent="signIn">
+      <form class="app-form" @submit.prevent="signIn">
         <AppInput
           label="email"
           type="email"
