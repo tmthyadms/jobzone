@@ -9,6 +9,10 @@
   .app-layout {
     @apply flex flex-col justify-between min-h-screen;
   }
+
+  .app-form {
+    @apply grid grid-cols-1 gap-6;
+  }
 }
 
 @layer components {
