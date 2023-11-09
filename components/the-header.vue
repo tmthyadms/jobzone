@@ -1,12 +1,22 @@
 <template>
   <header
-    class="sticky top-0 z-30 px-4 bg-base-100 bg-opacity-90 shadow-sm backdrop-blur"
+    class="sticky top-0 z-30 px-8 bg-base-100 bg-opacity-90 backdrop-blur"
   >
-    <div class="navbar">
-      <div class="flex-1">
+    <div class="navbar p-0">
+      <div class="navbar-start">
         <AppComboMark :link="true" />
       </div>
-      <div class="flex-none gap-2">
+      <div v-if="hasSignedIn" class="navbar-center self-end">
+        <div class="tabs">
+          <NuxtLink
+            to="/home"
+            class="tab tab-lg tab-bordered"
+            :class="{ 'tab-active': $route.name === 'home' }"
+            >Home</NuxtLink
+          >
+        </div>
+      </div>
+      <div class="navbar-end gap-2">
         <div id="tip-theme" class="tooltip tooltip-left" :data-tip="themeTip">
           <label
             role="button"
@@ -17,18 +27,17 @@
             <IconSun :width="20" class="swap-off" />
           </label>
         </div>
-        <div v-if="profile" class="dropdown dropdown-bottom dropdown-end">
+        <div v-if="hasSignedIn" class="dropdown dropdown-bottom dropdown-end">
           <label
             tabindex="0"
-            class="btn btn-primary btn-circle avatar online placholder"
+            class="btn btn-sm lg:btn-md btn-primary btn-circle avatar online placholder"
+            >{{ profile.placeholder }}</label
           >
-            <div class="rounded-full">jz</div>
-          </label>
           <ul
             tabindex="0"
             class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li><a>Profile</a></li>
+            <li><NuxtLink to="/profile">Profile</NuxtLink></li>
             <li><button type="button" @click="signOut">Sign Out</button></li>
           </ul>
         </div>
@@ -38,11 +47,11 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   props: {
-    profile: {
+    hasSignedIn: {
       type: Boolean,
     },
   },
@@ -68,6 +77,7 @@ export default {
     },
   },
   computed: {
+    ...mapGetters('profile', ['profile']),
     themeTip() {
       return this.theme.isDarkMode ? this.theme.dark.tip : this.theme.light.tip;
     },
