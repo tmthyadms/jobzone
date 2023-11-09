@@ -14,7 +14,7 @@
           select-id="acc-type"
           :req="true"
           :options="accType"
-          @change="(value) => (form.common.accType = value)"
+          @change="(value) => (form.auth.accType = value)"
         />
         <AppInput
           label="email"
@@ -22,10 +22,10 @@
           input-id="email"
           :req="true"
           ac="email"
-          @input="(value) => (form.common.email = value)"
+          @input="(value) => (form.auth.email = value)"
         />
-        <InputPassword @input="(value) => (form.common.password = value)" />
-        <template v-if="form.common.accType === 'job-seeker'">
+        <InputPassword @input="(value) => (form.auth.password = value)" />
+        <template v-if="form.auth.accType === 'job-seeker'">
           <AppInput
             label="first name"
             input-id="first-name"
@@ -78,7 +78,7 @@
             @clear="clearRecentEdu"
           />
         </template>
-        <template v-if="form.common.accType === 'business'">
+        <template v-if="form.auth.accType === 'business'">
           <AppInput
             label="business name"
             input-id="biz-name"
@@ -136,13 +136,19 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import accType from '@/assets/data/auth/acc-type.json';
+import genders from '@/assets/data/job-seeker/genders.json';
+import bizSize from '@/assets/data/business/biz-size.json';
 
 export default {
   events: ['flip'],
   data() {
     return {
+      accType,
+      genders,
+      bizSize,
       form: {
-        common: {
+        auth: {
           accType: '',
           email: '',
           password: '',
@@ -175,10 +181,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('acc-type', ['accType']),
-    ...mapGetters('genders', ['genders']),
     ...mapGetters('countries', ['countries']),
-    ...mapGetters('biz-size', ['bizSize']),
     ...mapGetters('qualifications', ['recentExp', 'recentEdu']),
   },
   watch: {
@@ -197,10 +200,10 @@ export default {
     ...mapActions('countries', ['fetchCountries']),
     ...mapActions('qualifications', ['clearRecentExp', 'clearRecentEdu']),
     async signUp() {
-      let formData = this.form.common;
-      if (this.form.common.accType === 'job-seeker')
+      let formData = this.form.auth;
+      if (this.form.auth.accType === 'job-seeker')
         formData = { ...formData, ...this.form.jobSeeker };
-      else if (this.form.common.accType === 'business')
+      else if (this.form.auth.accType === 'business')
         formData = { ...formData, ...this.form.business };
       this.isFormSubmitted = true;
       await this.$axios.$post('/createAuth', formData, {
