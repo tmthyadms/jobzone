@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     newTextAreaId() {
-      return this.new ? `new-${this.textAreaId}` : this.selectId;
+      return this.new ? `new-${this.textAreaId}` : this.textAreaId;
     },
     inputPlaceholder() {
       return this.prompt ? this.prompt : 'Enter your ' + this.label;
