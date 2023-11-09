@@ -1,0 +1,5 @@
+[
+  { "name": "Select your account type", "value": "" },
+  { "name": "Job seeker", "value": "job-seeker" },
+  { "name": "Business", "value": "business" }
+]
