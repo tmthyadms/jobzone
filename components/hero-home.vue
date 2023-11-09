@@ -31,6 +31,7 @@
         <CardJobPostFull
           v-if="jobPosts.length > 0"
           :title="jobPosts[selected].title"
+          :business-name="jobPosts[selected].businessName"
           :location="jobPosts[selected].location"
           :employ-type="jobPosts[selected].employmentType"
           :salary="`$${jobPosts[selected].salaryRange.min} - $${jobPosts[selected].salaryRange.max}`"
@@ -41,7 +42,7 @@
           :desc="jobPosts[selected].description"
           :requirements="jobPosts[selected].requirements"
           :benefits="jobPosts[selected].benefits"
-          :verify-status="false"
+          :fraudulent="JSON.parse(jobPosts[selected].fradulent)"
           class="hidden lg:block flex-1 max-h-screen overflow-y-auto"
         />
       </template>
@@ -51,11 +52,12 @@
           v-for="(jobPost, index) in jobPosts"
           :key="jobPost._id"
           :title="jobPost.title"
+          :business-name="jobPost.businessName"
           :location="jobPost.location"
           :employ-type="jobPost.employmentType"
           :salary="`$${jobPost.salaryRange.min} - $${jobPost.salaryRange.max}`"
           :selected="selected === index"
-          :verify-status="false"
+          :fraudulent="JSON.parse(jobPost.fradulent)"
           @select="selectJobPost(index)"
         />
       </div>
