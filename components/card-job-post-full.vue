@@ -1,7 +1,7 @@
 <template>
   <AppCard
     :title="title"
-    :subtitle-first="business"
+    :subtitle-first="businessName"
     :subtitle-second="location"
     :subtitleBadges="[employType, salary]"
     :desc="desc"
@@ -10,12 +10,12 @@
     <template #icon>
       <div
         class="tooltip tooltip-left font-normal normal-case"
-        :class="verifyStatus ? 'tooltip-success' : 'tooltip-gray-400'"
-        :data-tip="verifyStatus ? verify.tip : verify.not.tip"
+        :class="isFraudulent ? 'tooltip-gray-400' : 'tooltip-success'"
+        :data-tip="isFraudulent ? verify.not.tip : verify.tip"
       >
         <button type="button" class="btn btn-xs btn-ghost btn-circle">
           <IconPathCheckFill
-            :class="verifyStatus ? 'fill-success' : 'fill-gray-400'"
+            :class="isFraudulent ? 'fill-gray-400' : 'fill-success'"
           />
         </button>
       </div>
@@ -90,7 +90,7 @@ export default {
     title: {
       type: String,
     },
-    business: {
+    businessName: {
       type: String,
     },
     location: {
@@ -123,12 +123,15 @@ export default {
     benefits: {
       type: String,
     },
-    verifyStatus: {
-      type: Boolean,
+    fraudulent: {
+      type: Number,
     },
   },
   computed: {
     ...mapGetters('profile', ['profile']),
+    isFraudulent() {
+      return this.fraudulent === 1;
+    },
   },
 };
 </script>
