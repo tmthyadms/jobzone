@@ -69,13 +69,13 @@ def create_job_posting():
 
     job_posting['businessProfile'] = business['businessProfile']
 
-    fradulent = prediction_model(job_posting)
-    job_posting['fradulent'] = fradulent
+    fraudulent = prediction_model(job_posting)
+    job_posting['fraudulent'] = fraudulent
 
     job_posting.pop('businessProfile', None)
 
-    fradulent = prediction_model(job_posting)
-    job_posting['fradulent'] = fradulent
+    fraudulent = prediction_model(job_posting)
+    job_posting['fraudulent'] = fraudulent
 
     job_posting.pop('businessProfile', None)
 
