@@ -10,7 +10,7 @@
       </h2>
       <form class="grid grid-cols-1 gap-6" @submit.prevent="signUp">
         <InputSelect
-          label="Account Type"
+          label="account type"
           select-id="acc-type"
           :req="true"
           :options="accType"
@@ -41,14 +41,14 @@
             @input="(value) => (form.jobSeeker.name.last = value)"
           />
           <InputSelect
-            label="Gender"
+            label="gender"
             select-id="gender"
             ac="sex"
             :options="genders"
             @change="(value) => (form.jobSeeker.gender = value)"
           />
           <InputSelect
-            label="Country"
+            label="country"
             select-id="country"
             :req="true"
             ac="country-name"
@@ -58,7 +58,7 @@
           <AppInputModal
             label="most recent work experience"
             tip="Click to add work experience"
-            modal-id="exp_modal"
+            modal-id="modal-exp"
           />
           <CardRecent
             v-if="recentExp?.jobTitle"
@@ -69,7 +69,7 @@
           <AppInputModal
             label="most recent education"
             tip="Click to add education"
-            modal-id="edu_modal"
+            modal-id="modal-edu"
           />
           <CardRecent
             v-if="recentEdu?.levelEdu"

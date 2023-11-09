@@ -1,6 +1,6 @@
 <template>
   <div class="app-layout">
-    <TheHeader :profile="true" />
+    <TheHeader :hasSignedIn="true" />
     <main>
       <Nuxt />
     </main>
