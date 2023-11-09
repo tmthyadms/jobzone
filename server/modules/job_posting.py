@@ -11,7 +11,6 @@ def create_job_posting():
     data = request.get_json()
 
     business_id = data.get('bizId') 
-    business_id = ObjectId(business_id)
     title = data.get('title')
     location = data.get('location')
     department = data.get('department')
@@ -51,7 +50,7 @@ def create_job_posting():
         'businessId': business_id
     }
 
-    business = mongo.db.businesses.find_one({ "_id": business_id })
+    business = mongo.db.businesses.find_one({ "_id": ObjectId(business_id) })
     
     if 'telecommuting' in job_posting and job_posting['telecommuting'] is False:
       job_posting['telecommuting'] = 0
@@ -106,12 +105,6 @@ def get_jobpostings():
 
         business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(job_posting['businessId'])})
         job_posting['businessName'] = business['businessName']
-        job_posting.pop('businessId', None)
-        job_posting['businessId'] = str(job_posting['businessId'])
-
-        business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(job_posting['businessId'])})
-        job_posting['businessName'] = business['businessName']
-        job_posting.pop('businessId', None)
 
     return job_postings
 
