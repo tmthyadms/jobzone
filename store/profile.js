@@ -4,6 +4,7 @@ export const state = () => ({
     accType: '',
     email: '',
     placeholder: '',
+    fullName: '',
   },
   jobSeeker: {
     name: {
@@ -43,6 +44,9 @@ export const mutations = {
     state.common.id = payload._id;
     state.common.accType = payload.accountType;
     state.common.email = payload.email;
+  },
+  setFullName(state, payload) {
+    state.common.fullName = payload;
   },
   setPlaceholder(state, payload) {
     state.common.placeholder = payload;
@@ -119,14 +123,18 @@ export const actions = {
       if (accType === 'job-seeker') {
         await dispatch('fetchJobSeeker', payload);
         const name = state.jobSeeker.name;
+        const fullName = `${name.first} ${name.last}`;
         let placeholder = `${name.first[0]}${name.last[0]}`;
         placeholder = placeholder.toUpperCase();
+        commit('setFullName', fullName);
         commit('setPlaceholder', placeholder);
         commit('setProfile', state.jobSeeker);
       } else if (accType === 'business') {
         await dispatch('fetchBusiness', payload);
+        const fullName = state.business.bizName;
         let placeholder = state.business.bizName[0];
         placeholder = placeholder.toUpperCase();
+        commit('setFullName', fullName);
         commit('setPlaceholder', placeholder);
         commit('setProfile', state.business);
       }
