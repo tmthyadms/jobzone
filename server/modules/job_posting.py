@@ -3,6 +3,7 @@ from flask import request, jsonify
 from flask_pymongo import PyMongo
 mongo = PyMongo(app)
 from bson import ObjectId
+from prediction.predict_final import prediction_model
 
 
 @app.route('/createJobPosting', methods=['POST'])
@@ -10,6 +11,7 @@ def create_job_posting():
     data = request.get_json()
 
     business_id = data.get('bizId') 
+    business_id = ObjectId(business_id)
     title = data.get('title')
     location = data.get('location')
     department = data.get('department')
@@ -18,7 +20,6 @@ def create_job_posting():
     description = data.get('desc')
     requirements = data.get('requirements')
     benefits = data.get('benefits')
-    #TODO: telecommuting tukar
     telecommuting = False 
     has_business_logo = False 
     has_questions = False 
@@ -47,12 +48,11 @@ def create_job_posting():
         'requiredEducation': required_education, 
         'industry': industry,
         'function': function,
-        'businessId': business_id 
+        'businessId': business_id
     }
 
-    job_posting_id = mongo.db.jobpostings.insert_one(job_posting).inserted_id
-
-    business = mongo.db.businesses.find_one({ "_id": ObjectId(business_id) })
+    # job_posting['businessId'] = ObjectId(business_id)
+    business = mongo.db.businesses.find_one({ "_id": business_id })
     
     if 'telecommuting' in job_posting and job_posting['telecommuting'] is False:
       job_posting['telecommuting'] = 0
@@ -70,9 +70,14 @@ def create_job_posting():
       job_posting['hasQuestions'] = 1
 
     job_posting['businessProfile'] = business['businessProfile']
-    job_posting.pop('businessId', None)
 
-    print(job_posting)
+    fradulent = prediction_model(job_posting)
+    job_posting['fradulent'] = fradulent
+
+    job_posting.pop('businessProfile', None)
+
+
+    job_posting_id = mongo.db.jobpostings.insert_one(job_posting).inserted_id
 
     return str(job_posting_id)
 
@@ -90,26 +95,15 @@ def get_jobposting():
 
 @app.route('/jobPostings', methods=['POST'])
 def get_jobpostings():
-    data = request.get_json()
-    business_id = data.get('bizId')
+    job_postings = list(mongo.db.jobpostings.find())
 
-    if business_id:
-        job_postings = list(mongo.db.jobpostings.find({'businessId': business_id}))
-        business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(business_id)})
+    for job_posting in job_postings:
+        job_posting['_id'] = str(job_posting['_id'])
+        job_posting['businessId'] = str(job_posting['businessId'])
 
-        for job_posting in job_postings:
-            job_posting['_id'] = str(job_posting['_id'])
-            job_posting['businessName'] = business['businessName']
-            job_posting.pop('businessId', None)
-    else: 
-        job_postings = list(mongo.db.jobpostings.find())
-
-        for job_posting in job_postings:
-            job_posting['_id'] = str(job_posting['_id'])
-            
-            business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(job_posting['businessId'])})
-            job_posting['businessName'] = business['businessName']
-            job_posting.pop('businessId', None)
+        business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(job_posting['businessId'])})
+        job_posting['businessName'] = business['businessName']
+        job_posting.pop('businessId', None)
 
     return job_postings
 
