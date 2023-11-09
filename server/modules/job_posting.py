@@ -95,11 +95,21 @@ def get_jobpostings():
 
     if business_id:
         job_postings = list(mongo.db.jobpostings.find({'businessId': business_id}))
-    else:
+        business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(business_id)})
+
+        for job_posting in job_postings:
+            job_posting['_id'] = str(job_posting['_id'])
+            job_posting['businessName'] = business['businessName']
+            job_posting.pop('businessId', None)
+    else: 
         job_postings = list(mongo.db.jobpostings.find())
 
-    for job_posting in job_postings:
-        job_posting['_id'] = str(job_posting['_id'])
+        for job_posting in job_postings:
+            job_posting['_id'] = str(job_posting['_id'])
+            
+            business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(job_posting['businessId'])})
+            job_posting['businessName'] = business['businessName']
+            job_posting.pop('businessId', None)
 
     return job_postings
 
