@@ -9,25 +9,33 @@
     </figure>
     <div class="card-body">
       <slot name="body">
-        <h2 v-if="title" class="card-title capitalize">
-          {{ title }}
-          <div v-if="titleBadge" class="badge badge-secondary">{{ badge }}</div>
-        </h2>
+        <div v-if="title" class="card-title capitalize justify-between">
+          <span>
+            <span>{{ title }}</span>
+            <div v-if="titleBadge" class="badge badge-primary">
+              {{ badge }}
+            </div>
+          </span>
+          <slot name="icon"></slot>
+        </div>
         <h3
-          v-if="subtitle"
+          v-if="subtitleFirst || subtitleSecond"
           class="card-subtitle capitalize"
-          v-html="subtitle"
-        ></h3>
-        <div>
+        >
+          {{ subtitleFirst }}<br v-if="subtitleFirst && subtitleSecond" />{{
+            subtitleSecond
+          }}
+        </h3>
+        <div class="flex gap-2">
           <div
             v-if="subtitleBadges"
             v-for="subtitleBadge in subtitleBadges"
-            class="badge badge badge-primary capitalize"
+            class="badge badge badge-info capitalize"
           >
             {{ subtitleBadge }}
           </div>
         </div>
-        <p v-if="desc" class="text-xs opacity-60">{{ desc }}</p>
+        <p v-if="desc" class="text-xs text-justify opacity-60">{{ desc }}</p>
         <slot></slot>
         <div
           v-if="!!$slots.action || badges"
@@ -56,7 +64,10 @@ export default {
     title: {
       type: String,
     },
-    subtitle: {
+    subtitleFirst: {
+      type: String,
+    },
+    subtitleSecond: {
       type: String,
     },
     desc: {
