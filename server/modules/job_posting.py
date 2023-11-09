@@ -90,7 +90,13 @@ def get_jobposting():
 
 @app.route('/jobPostings', methods=['POST'])
 def get_jobpostings():
-    job_postings = list(mongo.db.jobpostings.find())
+    data = request.get_json()
+    business_id = data.get('bizId')
+
+    if business_id:
+        job_postings = list(mongo.db.jobpostings.find({'businessId': business_id}))
+    else:
+        job_postings = list(mongo.db.jobpostings.find())
 
     for job_posting in job_postings:
         job_posting['_id'] = str(job_posting['_id'])
