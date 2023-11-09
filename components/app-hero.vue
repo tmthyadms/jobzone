@@ -1,5 +1,5 @@
 <template>
-  <div class="hero min-h-screen" :style="bgImg">
+  <div class="hero" :class="fit ? 'min-h-fit' : 'min-h-screen'" :style="bgImg">
     <div v-if="img" class="hero-overlay bg-opacity-60"></div>
     <div
       class="hero-content"
@@ -15,12 +15,15 @@
         alt=""
         class="max-w-sm rounded-box shadow-2xl"
       />
-      <div class="flex-1">
+      <div class="flex-1 w-full">
         <div v-if="title || desc" class="mx-auto max-w-xl">
           <h1
             v-if="title"
             class="text-3xl lg:text-5xl font-bold capitalize text-center"
-            :class="{ 'mb-6': desc, 'lg:text-start': !center }"
+            :class="{
+              'mb-6': desc || (!desc && !!$slots.default),
+              'lg:text-start': !center,
+            }"
             v-html="title"
           ></h1>
           <p
@@ -58,6 +61,9 @@ export default {
     },
     figure: {
       type: String,
+    },
+    fit: {
+      type: Boolean,
     },
   },
   computed: {
