@@ -51,7 +51,6 @@ def create_job_posting():
         'businessId': business_id
     }
 
-    # job_posting['businessId'] = ObjectId(business_id)
     business = mongo.db.businesses.find_one({ "_id": business_id })
     
     if 'telecommuting' in job_posting and job_posting['telecommuting'] is False:
@@ -76,6 +75,10 @@ def create_job_posting():
 
     job_posting.pop('businessProfile', None)
 
+    fradulent = prediction_model(job_posting)
+    job_posting['fradulent'] = fradulent
+
+    job_posting.pop('businessProfile', None)
 
     job_posting_id = mongo.db.jobpostings.insert_one(job_posting).inserted_id
 
@@ -99,6 +102,11 @@ def get_jobpostings():
 
     for job_posting in job_postings:
         job_posting['_id'] = str(job_posting['_id'])
+        job_posting['businessId'] = str(job_posting['businessId'])
+
+        business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(job_posting['businessId'])})
+        job_posting['businessName'] = business['businessName']
+        job_posting.pop('businessId', None)
         job_posting['businessId'] = str(job_posting['businessId'])
 
         business = mongo.db.businesses.find_one_or_404({"_id": ObjectId(job_posting['businessId'])})
