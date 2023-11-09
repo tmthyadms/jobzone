@@ -3,15 +3,20 @@
 @tailwind utilities;
 
 @layer utilities {
-  .app-flex {
+  .app-flex-row {
     @apply flex flex-col lg:flex-row gap-x-6 gap-y-6 lg:gap-y-12;
   }
+
   .app-layout {
     @apply flex flex-col justify-between min-h-screen;
   }
 
   .app-form {
     @apply grid grid-cols-1 gap-6;
+  }
+
+  .app-border {
+    @apply border border-base-content border-opacity-5;
   }
 }
 
