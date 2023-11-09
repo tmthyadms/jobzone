@@ -15,6 +15,7 @@
         :required="req"
         :disabled="disabled"
         :autocomplete="ac"
+        :min="type === 'number' ? 0 : null"
         @input="$emit('input', $event.target.value)"
       />
     </slot>
