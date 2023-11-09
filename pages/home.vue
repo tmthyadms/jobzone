@@ -163,7 +163,6 @@ export default {
     async createJobPost() {
       const formJobPost = document.getElementById('form-job-post');
       const modalJobPost = document.getElementById('modal-job-post');
-      console.log(this.form);
       const formData = { ...{ bizId: this.profile.id }, ...this.form };
       this.isFormSubmitted = true;
       await this.$axios.$post('/createJobPosting', formData, {
