@@ -15,11 +15,7 @@ export const mutations = {
 export const actions = {
   async fetchJobPosts({ commit }) {
     try {
-      const data = await this.$axios.$post(
-        '/jobPostings',
-        {},
-        { headers: { 'Content-Type': 'application/json' } }
-      );
+      const data = await this.$axios.$post('/jobPostings');
       commit('setJobPosts', data);
     } catch (error) {
       console.error(error);
