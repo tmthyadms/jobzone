@@ -80,7 +80,11 @@
     </template>
     <template #action>
       <div class="space-x-2">
-        <div class="tooltip tooltip-left align-bottom" data-tip="Report job">
+        <div
+          v-if="businessId !== profile.id"
+          class="tooltip tooltip-left align-bottom"
+          data-tip="Report job"
+        >
           <button class="btn btn-error btn-outline">
             <IconFlagFill />
           </button>
