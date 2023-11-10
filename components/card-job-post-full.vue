@@ -8,16 +8,37 @@
     class="app-border bg-base-200"
   >
     <template #icon>
-      <div
-        class="tooltip tooltip-left font-normal normal-case"
-        :class="isFraudulent ? 'tooltip-gray-400' : 'tooltip-success'"
-        :data-tip="isFraudulent ? verify.not.tip : verify.tip"
-      >
-        <button type="button" class="btn btn-xs btn-ghost btn-circle">
-          <IconPathCheckFill
-            :class="isFraudulent ? 'fill-gray-400' : 'fill-success'"
-          />
-        </button>
+      <div>
+        <div
+          class="tooltip tooltip-left font-normal normal-case"
+          :class="isFraudulent ? 'tooltip-gray-400' : 'tooltip-success'"
+          :data-tip="isFraudulent ? verify.not.tip : verify.tip"
+        >
+          <button type="button" class="btn btn-xs btn-ghost btn-circle">
+            <IconPathCheckFill
+              :class="isFraudulent ? 'fill-gray-400' : 'fill-success'"
+            />
+          </button>
+        </div>
+        <div
+          v-if="businessId === profile.id"
+          class="dropdown dropdown-bottom dropdown-end"
+        >
+          <label role="button" tabindex="0" class="btn btn-xs btn-circle"
+            ><IconThreeDotsVertical
+          /></label>
+          <ul
+            tabindex="0"
+            class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li><a>edit post</a></li>
+            <li>
+              <button type="button" @click="deleteJobPost(postId)">
+                Delete Post
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </template>
     <template>
@@ -73,7 +94,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
@@ -87,7 +108,13 @@ export default {
     };
   },
   props: {
+    postId: {
+      type: String,
+    },
     title: {
+      type: String,
+    },
+    businessId: {
       type: String,
     },
     businessName: {
@@ -132,6 +159,9 @@ export default {
     isFraudulent() {
       return this.fraudulent === 1;
     },
+  },
+  methods: {
+    ...mapActions('job-posts', ['deleteJobPost']),
   },
 };
 </script>

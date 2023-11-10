@@ -21,4 +21,16 @@ export const actions = {
       console.error(error);
     }
   },
+  async deleteJobPost({ commit }, payload) {
+    try {
+      const data = await this.$axios.$post(
+        `/deleteJobPosting`,
+        { jobPostingId: payload },
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+      commit('setJobPosts', data);
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };

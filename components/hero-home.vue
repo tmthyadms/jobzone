@@ -30,7 +30,9 @@
       <template #side>
         <CardJobPostFull
           v-if="jobPosts.length > 0"
+          :post-id="jobPosts[selected]._id"
           :title="jobPosts[selected].title"
+          :business-id="jobPosts[selected].businessId"
           :business-name="jobPosts[selected].businessName"
           :location="jobPosts[selected].location"
           :employ-type="jobPosts[selected].employmentType"
