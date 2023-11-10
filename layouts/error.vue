@@ -4,9 +4,7 @@
     desc="Uh-oh! It seems this job is playing hide and seek. Head back to our homepage to uncover more job treasures."
   >
     <div class="flex justify-center">
-      <NuxtLink to="/home" class="btn btn-primary mx-auto"
-        >take me home</NuxtLink
-      >
+      <a href="/home" class="btn btn-primary mx-auto">take me home</a>
     </div>
   </AppHero>
 </template>
