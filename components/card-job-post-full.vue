@@ -168,7 +168,7 @@ export default {
 
 <style scoped>
 .tooltip-gray-400 {
-  @apply before:bg-gray-400 after:border-l-gray-400 before:text-inherit;
+  @apply before:bg-gray-400 after:border-l-gray-400 before:text-neutral;
 }
 
 :deep(.card-actions) {
