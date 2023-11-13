@@ -46,34 +46,30 @@
       <div class="space-y-6">
         <div class="flex">
           <div class="flex-1">
-            <p class="text-xs font-semibold capitalize opacity-60">
-              experience
-            </p>
+            <p class="app-label">experience</p>
             <p class="text-sm">{{ requiredExp }}</p>
           </div>
           <div class="flex-1">
-            <p class="text-xs font-semibold capitalize opacity-60">education</p>
+            <p class="app-label">education</p>
             <p class="text-sm">{{ requiredEdu }}</p>
           </div>
         </div>
         <div class="flex">
           <div class="flex-1">
-            <p class="text-xs font-semibold capitalize opacity-60">industry</p>
+            <p class="app-label">industry</p>
             <p class="text-sm">{{ industry }}</p>
           </div>
           <div class="flex-1">
-            <p class="text-xs font-semibold capitalize opacity-60">function</p>
+            <p class="app-label">function</p>
             <p class="text-sm">{{ jobFunction }}</p>
           </div>
         </div>
         <div>
-          <p class="text-xs font-semibold capitalize opacity-60">
-            requirements
-          </p>
+          <p class="app-label">requirements</p>
           <p class="text-sm">{{ requirements }}</p>
         </div>
         <div>
-          <p class="text-xs font-semibold capitalize opacity-60">benefits</p>
+          <p class="app-label">benefits</p>
           <p class="text-sm">{{ benefits }}</p>
         </div>
       </div>

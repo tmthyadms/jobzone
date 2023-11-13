@@ -1,8 +1,6 @@
 <template>
   <label class="block">
-    <span
-      v-if="label"
-      class="text-xs font-semibold capitalize align-top opacity-60"
+    <span v-if="label" class="app-label align-top"
       >{{ label }} <span v-if="req">*</span></span
     >
     <slot>
