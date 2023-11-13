@@ -18,30 +18,27 @@ export const getters = {
 
 export const mutations = {
   setRecentExp(state, payload) {
-    state.recent.exp = payload;
+    state.recent.exp = {
+      jobTitle: payload.jobTitle,
+      company: payload.company,
+    };
   },
   setRecentEdu(state, payload) {
-    state.recent.edu = payload;
+    state.recent.edu = {
+      levelEdu: payload.levelEdu,
+      fieldStudy: payload.fieldStudy,
+    };
   },
-};
-
-export const actions = {
-  setRecentExp({ commit }, payload) {
-    commit('setRecentExp', payload);
-  },
-  setRecentEdu({ commit }, payload) {
-    commit('setRecentEdu', payload);
-  },
-  clearRecentExp({ commit }) {
-    commit('setRecentExp', {
+  clearRecentExp(state) {
+    state.recent.exp = {
       jobTitle: '',
       company: '',
-    });
+    };
   },
-  clearRecentEdu({ commit }) {
-    commit('setRecentEdu', {
+  clearRecentEdu(state) {
+    state.recent.edu = {
       levelEdu: '',
       fieldStudy: '',
-    });
+    };
   },
 };
