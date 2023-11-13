@@ -1,5 +1,5 @@
 <template>
-  <AppCard class="!max-w-none !max-h-none">
+  <AppCard>
     <template #body>
       <AppComboMark class="justify-center lg:justify-start mb-6" />
       <h2
@@ -63,6 +63,7 @@ export default {
           headers: { 'Content-Type': 'application/json' },
         });
         if (!response) {
+          this.$toast.error('Invalid email or password.');
           this.isFormSubmitted = false;
           return;
         }
@@ -72,6 +73,7 @@ export default {
         this.isFormSubmitted = false;
         this.$router.push('/home');
       } catch (error) {
+        this.isFormSubmitted = false;
         console.error(error);
       }
     },
