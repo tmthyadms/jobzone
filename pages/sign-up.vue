@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapMutations } from 'vuex';
 
 export default {
   layout: 'pre-sign-in',
   methods: {
-    ...mapActions('qualifications', ['setRecentExp', 'setRecentEdu']),
+    ...mapMutations('qualifications', ['setRecentExp', 'setRecentEdu']),
     addExp() {
       const modalEdu = document.getElementById('modal-exp');
       const formExp = document.getElementById('form-exp');
