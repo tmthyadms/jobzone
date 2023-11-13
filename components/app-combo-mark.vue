@@ -1,31 +1,23 @@
 <template>
-  <component
-    :is="componentType"
+  <button
+    type="button"
     id="app-combo-mark"
     class="flex items-center gap-2"
+    @click="scrollToTop"
   >
     <img src="images/logo/jz-32.png" alt="" class="app-img" />
-    <span href="#" class="hidden lg:inline font-bold text-xl normal-case"
+    <span class="hidden md:inline font-bold text-xl normal-case"
       >Job<span class="text-primary">zone</span></span
     >
-  </component>
+  </button>
 </template>
 
 <script>
 export default {
-  props: {
-    link: {
-      type: Boolean,
+  methods: {
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
     },
-  },
-  computed: {
-    componentType() {
-      return this.link ? 'a' : 'div';
-    },
-  },
-  mounted() {
-    if (this.link)
-      document.getElementById('app-combo-mark').setAttribute('href', '#');
   },
 };
 </script>
