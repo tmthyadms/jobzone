@@ -1,17 +1,23 @@
 <template>
   <AppCard class="card-compact">
     <template #body>
-      <div>
+      <div :class="{ 'text-[graytext]': disabled }">
         <p class="font-semibold">{{ title }}</p>
         <p class="text-sm">{{ subtitle }}</p>
       </div>
-      <button
-        type="button"
-        class="btn btn-xs btn-error btn-square btn-outline"
-        @click="$emit('clear')"
+      <div
+        :class="{ 'tooltip tooltip-left': !disabled }"
+        data-tip="Remove this"
       >
-        <IconTrash />
-      </button>
+        <button
+          type="button"
+          class="btn btn-xs btn-error btn-square btn-outline"
+          :disabled="disabled"
+          @click="$emit('clear')"
+        >
+          <IconTrash />
+        </button>
+      </div>
     </template>
   </AppCard>
 </template>
@@ -27,6 +33,9 @@ export default {
     subtitle: {
       type: String,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
     },
   },
 };
