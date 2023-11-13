@@ -92,3 +92,4 @@ sw.*
 # Flask session files
 flask_session/
 server/modules/__pycache__/
+server/prediction/__pycache__/
