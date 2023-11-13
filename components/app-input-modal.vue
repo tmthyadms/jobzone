@@ -5,8 +5,13 @@
         >{{ label }} <span v-if="req">*</span></span
       >
     </label>
-    <div class="tooltip tooltip-left" :data-tip="tip">
-      <button type="button" class="btn btn-xs btn-square" @click="showModal">
+    <div :class="{ 'tooltip tooltip-left': !disabled }" :data-tip="tip">
+      <button
+        type="button"
+        class="btn btn-xs btn-square"
+        :disabled="disabled"
+        @click="showModal"
+      >
         <IconPlus />
       </button>
     </div>
@@ -30,6 +35,9 @@ export default {
     modalId: {
       type: String,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
     },
   },
   methods: {
