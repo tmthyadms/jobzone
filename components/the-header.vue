@@ -4,7 +4,7 @@
   >
     <div class="navbar p-0">
       <div class="navbar-start">
-        <AppComboMark :link="true" />
+        <AppComboMark />
       </div>
       <div v-if="hasSignedIn" class="navbar-center self-end">
         <div class="tabs">
