@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen">
-    <AppHero :fit="true">
+    <AppHero :fit="true" :main-max-w="false">
       <div
         class="flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-0"
       >
@@ -9,7 +9,7 @@
           search-id="search-job"
           class="w-72 lg:w-96"
         />
-        <div class="flex justify-center gap-2">
+        <div class="flex items-center justify-center gap-2">
           <div class="tooltip tooltip-left" data-tip="Refresh job posts">
             <button class="btn btn-ghost" @click="fetchJobPosts">
               <IconArrowClockwise />
@@ -26,7 +26,22 @@
         </div>
       </div>
     </AppHero>
-    <AppHero :center="false" :fit="true">
+    <AppHero :center="false" :fit="true" :main-max-w="false">
+      <div class="job-posts">
+        <CardJobPost
+          v-if="jobPosts.length > 0"
+          v-for="(jobPost, index) in jobPosts"
+          :key="jobPost._id"
+          :title="jobPost.title"
+          :business-name="jobPost.businessName"
+          :location="jobPost.location"
+          :employ-type="jobPost.employmentType"
+          :salary="`$${jobPost.salaryRange.min} - $${jobPost.salaryRange.max}`"
+          :selected="selected === index"
+          :fraudulent="JSON.parse(jobPost.fradulent)"
+          @select="selectJobPost(index)"
+        />
+      </div>
       <template #side>
         <CardJobPostFull
           v-if="jobPosts.length > 0"
@@ -45,24 +60,9 @@
           :requirements="jobPosts[selected].requirements"
           :benefits="jobPosts[selected].benefits"
           :fraudulent="JSON.parse(jobPosts[selected].fradulent)"
-          class="hidden lg:block flex-1 max-h-screen overflow-y-auto"
+          class="sticky top-[4.5rem] hidden lg:block flex-1 max-h-screen overflow-y-auto"
         />
       </template>
-      <div class="job-posts">
-        <CardJobPost
-          v-if="jobPosts.length > 0"
-          v-for="(jobPost, index) in jobPosts"
-          :key="jobPost._id"
-          :title="jobPost.title"
-          :business-name="jobPost.businessName"
-          :location="jobPost.location"
-          :employ-type="jobPost.employmentType"
-          :salary="`$${jobPost.salaryRange.min} - $${jobPost.salaryRange.max}`"
-          :selected="selected === index"
-          :fraudulent="JSON.parse(jobPost.fradulent)"
-          @select="selectJobPost(index)"
-        />
-      </div>
     </AppHero>
   </div>
 </template>
@@ -96,6 +96,16 @@ export default {
     ...mapGetters('job-posts', ['jobPosts']),
     ...mapGetters('profile', ['profile']),
   },
+  mounted() {
+    const heroContents = document.querySelectorAll('.hero-content');
+    heroContents[0].classList.add('w-auto', 'lg:w-full');
+    heroContents[1].classList.add(
+      'items-center',
+      'lg:items-start',
+      'w-auto',
+      'lg:w-full'
+    );
+  },
   methods: {
     ...mapActions('job-posts', ['fetchJobPosts']),
     showModalJobPost() {
@@ -113,10 +123,6 @@ export default {
 </script>
 
 <style scoped>
-:deep(.hero-content) {
-  @apply items-start w-full;
-}
-
 .job-posts {
   @apply flex flex-col gap-y-6;
 }
