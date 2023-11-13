@@ -78,8 +78,11 @@ export const mutations = {
       bizSize: payload.businessSize,
     };
   },
-  setProfile(state, payload) {
-    state.profile = { ...state.common, ...payload };
+  setProfile(state) {
+    const accType = state.common.accType;
+    const accTypeDetails =
+      accType === 'job-seeker' ? { ...state.jobSeeker } : { ...state.business };
+    state.profile = { ...state.common, ...accTypeDetails };
   },
 };
 
@@ -92,6 +95,7 @@ export const actions = {
         { headers: { 'Content-Type': 'application/json' } }
       );
       commit('setCommon', dataAuth);
+      commit('setProfile');
     } catch (error) {
       console.error(error);
     }
@@ -104,6 +108,7 @@ export const actions = {
         { headers: { 'Content-Type': 'application/json' } }
       );
       commit('setJobSeeker', dataJobSeeker);
+      commit('setProfile');
     } catch (error) {
       console.error(error);
     }
@@ -115,6 +120,7 @@ export const actions = {
       { headers: { 'Content-Type': 'application/json' } }
     );
     commit('setBusiness', dataBusiness);
+    commit('setProfile');
   },
   async fetchProfile({ dispatch, commit, state }, payload) {
     try {
@@ -128,7 +134,6 @@ export const actions = {
         placeholder = placeholder.toUpperCase();
         commit('setFullName', fullName);
         commit('setPlaceholder', placeholder);
-        commit('setProfile', state.jobSeeker);
       } else if (accType === 'business') {
         await dispatch('fetchBusiness', payload);
         const fullName = state.business.bizName;
@@ -136,8 +141,77 @@ export const actions = {
         placeholder = placeholder.toUpperCase();
         commit('setFullName', fullName);
         commit('setPlaceholder', placeholder);
-        commit('setProfile', state.business);
       }
+      await commit('setProfile'); // for setting placeholder
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  async updateAuth({ dispatch }, payload) {
+    try {
+      let auth = { authId: payload.authId };
+      if (payload.email) auth.email = payload.email;
+      await this.$axios.$post('/updateAuth', auth, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      await dispatch('fetchAuth', payload.authId);
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  async updateJobSeeker({ dispatch }, payload) {
+    try {
+      let jobSeeker = { jobSeekerId: payload.jobSeekerId };
+      if (payload.name?.first) {
+        jobSeeker.name = {
+          first: payload.name.first,
+          last: payload.name.last,
+        };
+      }
+      if (payload.gender) jobSeeker.gender = payload.gender;
+      if (payload.country) jobSeeker.country = payload.country;
+      if (payload.recentExp?.jobTitle) {
+        jobSeeker.recentExp = {
+          jobTitle: payload.recentExp.jobTitle,
+          company: payload.recentExp.company,
+        };
+      } else {
+        jobSeeker.recentExp = {
+          jobTitle: '',
+          company: '',
+        };
+      }
+      if (payload.recentEdu?.levelEdu) {
+        jobSeeker.recentEdu = {
+          levelEdu: payload.recentEdu.levelEdu,
+          fieldStudy: payload.recentEdu.fieldStudy,
+        };
+      } else {
+        jobSeeker.recentEdu = {
+          levelEdu: '',
+          fieldStudy: '',
+        };
+      }
+      await this.$axios.$post('/updateJobSeeker', jobSeeker, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      await dispatch('fetchJobSeeker', payload.jobSeekerId);
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  async updateBusiness({ dispatch }, payload) {
+    try {
+      let business = { bizId: payload.bizId };
+      if (payload.bizName) business.bizName = payload.bizName;
+      if (payload.bizProfile) business.bizProfile = payload.bizProfile;
+      if (payload.regNum) business.regNum = payload.regNum;
+      if (payload.address) business.address = payload.address;
+      if (payload.bizSize) business.bizSize = payload.bizSize;
+      await this.$axios.$post('/updateBusiness', business, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      await dispatch('fetchBusiness', payload.bizId);
     } catch (error) {
       console.error(error);
     }
