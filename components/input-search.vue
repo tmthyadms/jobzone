@@ -2,7 +2,7 @@
   <AppInput>
     <div class="relative">
       <input
-        type="text"
+        type="search"
         :id="searchId"
         :name="searchId"
         :placeholder="prompt"
