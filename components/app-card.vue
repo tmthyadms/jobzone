@@ -1,7 +1,7 @@
 <template>
   <div
-    class="card lg:card-side bg-base-100 text-base-content shadow"
-    :class="{ 'image-full': overlay, hover: hover }"
+    class="card bg-base-100 text-base-content shadow"
+    :class="{ 'lg:card-side': figure, 'image-full': overlay, hover: hover }"
     @click="$emit('click', $event)"
   >
     <figure v-if="figure">

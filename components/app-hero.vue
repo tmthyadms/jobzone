@@ -15,7 +15,7 @@
         alt=""
         class="max-w-sm rounded-box shadow-2xl"
       />
-      <div class="flex-1 w-full">
+      <div class="flex-1 w-full" :class="{ 'max-w-md': mainMaxW }">
         <div v-if="title || desc" class="mx-auto max-w-xl">
           <h1
             v-if="title"
@@ -64,6 +64,10 @@ export default {
     },
     fit: {
       type: Boolean,
+    },
+    mainMaxW: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
