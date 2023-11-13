@@ -1,5 +1,5 @@
 <template>
-  <AppCard class="!max-w-none !max-h-none">
+  <AppCard>
     <template #body>
       <AppComboMark class="justify-center lg:justify-start mb-6" />
       <h2
@@ -135,7 +135,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapMutations, mapActions } from 'vuex';
 import accType from '@/assets/data/auth/acc-type.json';
 import genders from '@/assets/data/job-seeker/genders.json';
 import bizSize from '@/assets/data/business/biz-size.json';
@@ -197,21 +197,27 @@ export default {
     this.clearRecentEdu();
   },
   methods: {
+    ...mapMutations('qualifications', ['clearRecentExp', 'clearRecentEdu']),
     ...mapActions('countries', ['fetchCountries']),
-    ...mapActions('qualifications', ['clearRecentExp', 'clearRecentEdu']),
     async signUp() {
-      let formData = this.form.auth;
-      if (this.form.auth.accType === 'job-seeker')
-        formData = { ...formData, ...this.form.jobSeeker };
-      else if (this.form.auth.accType === 'business')
-        formData = { ...formData, ...this.form.business };
-      this.isFormSubmitted = true;
-      await this.$axios.$post('/createAuth', formData, {
-        headers: { 'Content-Type': 'application/json' },
-      });
-      window.scrollTo({ top: 0, behavior: 'auto' });
-      this.isFormSubmitted = false;
-      this.$router.push('/');
+      try {
+        let formData = this.form.auth;
+        if (this.form.auth.accType === 'job-seeker')
+          formData = { ...formData, ...this.form.jobSeeker };
+        else if (this.form.auth.accType === 'business')
+          formData = { ...formData, ...this.form.business };
+        this.isFormSubmitted = true;
+        await this.$axios.$post('/createAuth', formData, {
+          headers: { 'Content-Type': 'application/json' },
+        });
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        this.$toast.success('Account created successfully.');
+        this.isFormSubmitted = false;
+        this.$router.push('/');
+      } catch (error) {
+        this.isFormSubmitted = false;
+        this.$toast.error(error.message);
+      }
     },
   },
   async fetch() {
