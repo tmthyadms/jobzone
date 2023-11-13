@@ -7,6 +7,7 @@
       :required="req"
       :disabled="disabled"
       :autocomplete="ac"
+      :value="value"
       @change="$emit('change', $event.target.value)"
     >
       <template v-for="(option, index) in options">
@@ -50,6 +51,9 @@ export default {
     options: {
       type: Array,
       required: true,
+    },
+    value: {
+      type: String,
     },
   },
   computed: {
