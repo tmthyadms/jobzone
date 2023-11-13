@@ -1,6 +1,6 @@
 [
   { "name": "Select your gender", "value": "" },
-  { "name": "Male", "value": "male" },
-  { "name": "Female", "value": "female" },
-  { "name": "Prefer not to say", "value": "prefer-not-to-say" }
+  { "name": "Male", "value": "Male" },
+  { "name": "Female", "value": "Female" },
+  { "name": "Prefer not to say", "value": "Prefer not to say" }
 ]
