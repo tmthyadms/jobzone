@@ -26,9 +26,9 @@ def login():
 @app.route('/logout', methods=['POST'])
 def logout():
     if 'authId' in session and session['authId']: session['authId'] = None
-    else: return None
+    else: return "Your account has already logged out."
     
-    return True
+    return "Logout successful."
 
 
 @app.route('/createAuth', methods=['POST'])
